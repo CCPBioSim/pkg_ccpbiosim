@@ -7,7 +7,7 @@
   <author>James Gebbie-Rayet</author>
   <authorEmail>james.gebbie@gmail.com</authorEmail>
   <authorUrl>https://github.com/jimboid</authorUrl>
-  <version>v0.3.7</version>
+  <version>v0.0.1</version>
   <description>A CCPBioSim plugin for custom organisation features.</description>
   <namespace path="src">Ccpbiosim\Component\Ccpbiosim</namespace>
   <install>
@@ -73,7 +73,4 @@
   </config>
   <plugins>
     </plugins>
-  <updateservers>
-    <server type="extension" priority="1" name="com_ccpbiosim">https://ccpbiosim.github.io/com_ccpbiosim/update.xml</server>
-  </updateservers>
 </extension>
