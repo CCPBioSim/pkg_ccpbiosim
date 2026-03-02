@@ -1,43 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" method="upgrade">
-    <name>CCPBioSim Hero Module</name>
-    <version>v0.0.1</version>
-    <author>James Gebbie-Rayet</author>
-    <creationDate>2025/02/25</creationDate>
-    <description>Module for showing hero banner</description>
-    <namespace path="src">Ccpbiosim\Module\Hero</namespace>
-    <files>
-        <folder module="mod_ccpbiosim_hero">services</folder>
-        <folder>language</folder>
-        <folder>src</folder>
-        <folder>tmpl</folder>
-    </files>
-    <config>
-        <fields name="params">
-            <fieldset name="basic">
-                <field
-                    name="hero-image"
-                    type="media"
-                    directory="banners"
-                    types="images"
-                    label="MOD_CCPBIOSIM_HERO_IMAGE"
-                />
-                <field
-                    name="hero-video"
-                    type="media"
-                    directory="banners"
-                    types="videos"
-                    label="MOD_CCPBIOSIM_HERO_MOVIE"
-                />
-                <field name="hero-title" type="textarea" default="MOD_CCPBIOSIM_HERO_TITLE_TEXT" label="MOD_CCPBIOSIM_HERO_TITLE_LABEL" description="" />
-                <field name="hero-welcome" type="textarea" default="MOD_CCPBIOSIM_HERO_WELCOME_TEXT" label="MOD_CCPBIOSIM_HERO_WELCOME_LABEL" description="" />
-                <field name="hero-software-button" type="text" default="MOD_CCPBIOSIM_HERO_SOFTWARE_TEXT" label="MOD_CCPBIOSIM_HERO_SOFTWARE_LABEL" description="" />
-                <field name="hero-software-link" type="menuitem" label="MOD_CCPBIOSIM_HERO_SOFTWARE_MENU_LABEL" description="MOD_CCPBIOSIM_HERO_SOFTWARE_MENU_TEXT" />
-                <field name="hero-events-button" type="text" default="MOD_CCPBIOSIM_HERO_EVENTS_TEXT" label="MOD_CCPBIOSIM_HERO_EVENTS_LABEL" description="" />
-                <field name="hero-events-link" type="menuitem" label="MOD_CCPBIOSIM_HERO_EVENTS_MENU_LABEL" description="MOD_CCPBIOSIM_HERO_EVENTS_MENU_TEXT" />
-                <field name="hero-training-button" type="text" default="MOD_CCPBIOSIM_HERO_TRAINING_TEXT" label="MOD_CCPBIOSIM_HERO_TRAINING_LABEL" description="" />
-                <field name="hero-training-link" type="menuitem" label="MOD_CCPBIOSIM_HERO_TRAINING_MENU_LABEL" description="MOD_CCPBIOSIM_HERO_TRAINING_MENU_TEXT" />
-            </fieldset>
-        </fields>
-    </config>
+  <name>CCPBioSim Hero Module</name>
+  <version>v0.4.0</version>
+  <author>James Gebbie-Rayet</author>
+  <creationDate>2025/02/25</creationDate>
+  <description>Module for showing hero banner</description>
+  <namespace path="src">Ccpbiosim\Module\Hero</namespace>
+  <files>
+    <folder module="mod_ccpbiosim_hero">services</folder>
+    <folder>language</folder>
+    <folder>src</folder>
+    <folder>tmpl</folder>
+  </files>
+  <config>
+    <fields name="params">
+      <fieldset name="basic">
+        <field name="hero-image" type="media" directory="banners" types="images" label="MOD_CCPBIOSIM_HERO_IMAGE"/>
+        <field name="hero-video" type="media" directory="banners" types="videos" label="MOD_CCPBIOSIM_HERO_MOVIE"/>
+        <field name="hero-title" type="textarea" default="MOD_CCPBIOSIM_HERO_TITLE_TEXT" label="MOD_CCPBIOSIM_HERO_TITLE_LABEL" description=""/>
+        <field name="hero-welcome" type="textarea" default="MOD_CCPBIOSIM_HERO_WELCOME_TEXT" label="MOD_CCPBIOSIM_HERO_WELCOME_LABEL" description=""/>
+        <field name="hero-software-button" type="text" default="MOD_CCPBIOSIM_HERO_SOFTWARE_TEXT" label="MOD_CCPBIOSIM_HERO_SOFTWARE_LABEL" description=""/>
+        <field name="hero-software-link" type="menuitem" label="MOD_CCPBIOSIM_HERO_SOFTWARE_MENU_LABEL" description="MOD_CCPBIOSIM_HERO_SOFTWARE_MENU_TEXT"/>
+        <field name="hero-events-button" type="text" default="MOD_CCPBIOSIM_HERO_EVENTS_TEXT" label="MOD_CCPBIOSIM_HERO_EVENTS_LABEL" description=""/>
+        <field name="hero-events-link" type="menuitem" label="MOD_CCPBIOSIM_HERO_EVENTS_MENU_LABEL" description="MOD_CCPBIOSIM_HERO_EVENTS_MENU_TEXT"/>
+        <field name="hero-training-button" type="text" default="MOD_CCPBIOSIM_HERO_TRAINING_TEXT" label="MOD_CCPBIOSIM_HERO_TRAINING_LABEL" description=""/>
+        <field name="hero-training-link" type="menuitem" label="MOD_CCPBIOSIM_HERO_TRAINING_MENU_LABEL" description="MOD_CCPBIOSIM_HERO_TRAINING_MENU_TEXT"/>
+      </fieldset>
+    </fields>
+  </config>
 </extension>

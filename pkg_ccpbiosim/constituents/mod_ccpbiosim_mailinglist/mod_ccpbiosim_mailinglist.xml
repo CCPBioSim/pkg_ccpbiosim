@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" method="upgrade">
-    <name>CCPBioSim Mailing List Module</name>
-    <version>v0.0.1</version>
-    <author>James Gebbie-Rayet</author>
-    <creationDate>2025/02/27</creationDate>
-    <description>Module for showing community mailing list</description>
-    <namespace path="src">Ccpbiosim\Module\Mailinglist</namespace>
-    <files>
-        <folder module="mod_ccpbiosim_mailinglist">services</folder>
-        <folder>language</folder>
-        <folder>src</folder>
-        <folder>tmpl</folder>
-    </files>
-    <config>
-        <fields name="params">
-            <fieldset name="basic">
-                <field name="mailing-join-title" type="textarea" default="MOD_CCPBIOSIM_MAILING_JOIN_TITLE_TEXT" label="MOD_CCPBIOSIM_MAILING_JOIN_TITLE_LABEL" description="" />
-                <field name="mailing-join-welcome" type="textarea" default="MOD_CCPBIOSIM_MAILING_JOIN_WELCOME_TEXT" label="MOD_CCPBIOSIM_MAILING_JOIN_WELCOME_LABEL" description="" />
-                <field name="mailing-join-button" type="text" default="MOD_CCPBIOSIM_MAILING_JOIN_TEXT" label="MOD_CCPBIOSIM_MAILING_JOIN_LABEL" description="" />
-                <field name="mailing-join-link" type="menuitem" label="MOD_CCPBIOSIM_MAILING_JOIN_MENU_LABEL" description="MOD_CCPBIOSIM_MAILING_JOIN_MENU_TEXT" />
-            </fieldset>
-        </fields>
-    </config>
+  <name>CCPBioSim Mailing List Module</name>
+  <version>v0.4.0</version>
+  <author>James Gebbie-Rayet</author>
+  <creationDate>2025/02/27</creationDate>
+  <description>Module for showing community mailing list</description>
+  <namespace path="src">Ccpbiosim\Module\Mailinglist</namespace>
+  <files>
+    <folder module="mod_ccpbiosim_mailinglist">services</folder>
+    <folder>language</folder>
+    <folder>src</folder>
+    <folder>tmpl</folder>
+  </files>
+  <config>
+    <fields name="params">
+      <fieldset name="basic">
+        <field name="mailing-join-title" type="textarea" default="MOD_CCPBIOSIM_MAILING_JOIN_TITLE_TEXT" label="MOD_CCPBIOSIM_MAILING_JOIN_TITLE_LABEL" description=""/>
+        <field name="mailing-join-welcome" type="textarea" default="MOD_CCPBIOSIM_MAILING_JOIN_WELCOME_TEXT" label="MOD_CCPBIOSIM_MAILING_JOIN_WELCOME_LABEL" description=""/>
+        <field name="mailing-join-button" type="text" default="MOD_CCPBIOSIM_MAILING_JOIN_TEXT" label="MOD_CCPBIOSIM_MAILING_JOIN_LABEL" description=""/>
+        <field name="mailing-join-link" type="menuitem" label="MOD_CCPBIOSIM_MAILING_JOIN_MENU_LABEL" description="MOD_CCPBIOSIM_MAILING_JOIN_MENU_TEXT"/>
+      </fieldset>
+    </fields>
+  </config>
 </extension>

@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <extension type="package" version="1.6" method="upgrade">
-    <name>CCPBioSim Package</name>
-    <author>James Gebbie-Rayet</author>
-    <creationDate>2026/02/27</creationDate>
-    <packagename>ccpbiosim</packagename>
-    <version>v0.4.0</version>
-    <url>https://github.com/ccpbiosim</url>
-    <packager>CCPBioSim</packager>
-    <packagerurl>https://github.com/ccpbiosim/pkg_ccpbiosim</packagerurl>
-    <description>Package for the CCPBioSim website components and modules</description>
-    <update>https://ccpbiosim.github.io/pkg_ccpbiosim/update.xml</update>
-    <blockChildUninstall>true</blockChildUninstall>
-    <files folder="constituents">
-        <file type="component" id="com_ccpbiosim">com_ccpbiosim</file>
-        <file type="module" id="mod_ccpbiosim_hero" client="site">mod_ccpbiosim_hero</file>
-        <file type="module" id="mod_ccpbiosim_mailinglist" client="site">mod_ccpbiosim_mailinglist</file>
-    </files>
+  <name>CCPBioSim Package</name>
+  <author>James Gebbie-Rayet</author>
+  <creationDate>2026/02/27</creationDate>
+  <packagename>ccpbiosim</packagename>
+  <version>v0.4.0</version>
+  <url>https://github.com/ccpbiosim</url>
+  <packager>CCPBioSim</packager>
+  <packagerurl>https://github.com/ccpbiosim/pkg_ccpbiosim</packagerurl>
+  <description>Package for the CCPBioSim website components and modules</description>
+  <update>https://ccpbiosim.github.io/pkg_ccpbiosim/update.xml</update>
+  <blockChildUninstall>true</blockChildUninstall>
+  <files folder="constituents">
+    <file type="component" id="com_ccpbiosim">com_ccpbiosim</file>
+    <file type="module" id="mod_ccpbiosim_hero" client="site">mod_ccpbiosim_hero</file>
+    <file type="module" id="mod_ccpbiosim_mailinglist" client="site">mod_ccpbiosim_mailinglist</file>
+  </files>
 </extension>
