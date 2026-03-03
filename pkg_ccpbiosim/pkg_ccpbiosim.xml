@@ -10,7 +10,7 @@
     <packagerurl>https://github.com/ccpbiosim/pkg_ccpbiosim</packagerurl>
     <description>Package for the CCPBioSim website components and modules</description>
     <updateservers>
-      <server type="extension" priority="1" name="pkg_ccpbiosim">https://ccpbiosim.github.io/com_ccpbiosim/update.xml</server>
+      <server type="extension" priority="1" name="pkg_ccpbiosim">https://ccpbiosim.github.io/pkg_ccpbiosim/update.xml</server>
     </updateservers>
     <blockChildUninstall>true</blockChildUninstall>
     <files folder="constituents">
