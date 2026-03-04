@@ -7,7 +7,7 @@
   <author>James Gebbie-Rayet</author>
   <authorEmail>james.gebbie@gmail.com</authorEmail>
   <authorUrl>https://github.com/jimboid</authorUrl>
-  <version>v0.4.1</version>
+  <version>v0.5.0</version>
   <description>A CCPBioSim plugin for custom organisation features.</description>
   <namespace path="src">Ccpbiosim\Component\Ccpbiosim</namespace>
   <install>
