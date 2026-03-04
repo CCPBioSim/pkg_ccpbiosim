@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="module" client="site" method="upgrade">
+  <name>CCPBioSim Homepage Activities Module</name>
+  <version>v0.4.0</version>
+  <author>James Gebbie-Rayet</author>
+  <creationDate>2025/02/27</creationDate>
+  <description>Module for showing community mailing list</description>
+  <namespace path="src">Ccpbiosim\Module\Activities</namespace>
+  <files>
+    <folder module="mod_ccpbiosim_activities">services</folder>
+    <folder>language</folder>
+    <folder>src</folder>
+    <folder>tmpl</folder>
+  </files>
+  <config>
+    <fields name="params">
+      <fieldset name="basic">
+        <field name="actvties-ttleblock1" type="text" default="MOD_CCPBIOSIM_ACTIVITIES_TITLE1_TEXT" label="MOD_CCPBIOSIM_ACTIVITIES_TITLE1_LABEL" description=""/>
+        <field name="actvties-descblock1" type="textarea" default="MOD_CCPBIOSIM_ACTIVITIES_DESC1_TEXT" label="MOD_CCPBIOSIM_ACTIVITIES_DESC1_LABEL" description=""/>
+        <field name="actvties-ttleblock2" type="text" default="MOD_CCPBIOSIM_ACTIVITIES_TITLE2_TEXT" label="MOD_CCPBIOSIM_ACTIVITIES_TITLE2_LABEL" description=""/>
+        <field name="actvties-descblock2" type="textarea" default="MOD_CCPBIOSIM_ACTIVITIES_DESC2_TEXT" label="MOD_CCPBIOSIM_ACTIVITIES_DESC2_LABEL" description=""/>
+        <field name="actvties-ttleblock3" type="text" default="MOD_CCPBIOSIM_ACTIVITIES_TITLE3_TEXT" label="MOD_CCPBIOSIM_ACTIVITIES_TITLE3_LABEL" description=""/>
+        <field name="actvties-descblock3" type="textarea" default="MOD_CCPBIOSIM_ACTIVITIES_DESC3_TEXT" label="MOD_CCPBIOSIM_ACTIVITIES_DESC3_LABEL" description=""/>
+        <field name="actvties-ttleblock4" type="text" default="MOD_CCPBIOSIM_ACTIVITIES_TITLE4_TEXT" label="MOD_CCPBIOSIM_ACTIVITIES_TITLE4_LABEL" description=""/>
+        <field name="actvties-descblock5" type="textarea" default="MOD_CCPBIOSIM_ACTIVITIES_DESC4_TEXT" label="MOD_CCPBIOSIM_ACTIVITIES_DESC4_LABEL" description=""/>
+      </fieldset>
+    </fields>
+  </config>
+</extension>
