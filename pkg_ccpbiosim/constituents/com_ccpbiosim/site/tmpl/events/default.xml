@@ -14,6 +14,7 @@
             >
                 <option value="-1">Choose a Layout</option>
                 <option value="default">Default</option>
+                <option value="all-accordion">All Events Accordion</option>
                 <option value="upcoming-accordion">Upcoming Accordion</option>
                 <option value="previous-accordion">Previous Accordion</option>
                 <option value="list">List</option>
