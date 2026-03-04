@@ -4,7 +4,7 @@
   <version>v0.4.0</version>
   <author>James Gebbie-Rayet</author>
   <creationDate>2025/02/27</creationDate>
-  <description>Module for showing community mailing list</description>
+  <description>Module for showing community activities module.</description>
   <namespace path="src">Ccpbiosim\Module\Activities</namespace>
   <files>
     <folder module="mod_ccpbiosim_activities">services</folder>
