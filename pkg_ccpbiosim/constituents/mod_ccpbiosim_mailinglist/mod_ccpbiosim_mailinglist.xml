@@ -18,7 +18,7 @@
         <field name="mailing-join-title" type="textarea" default="MOD_CCPBIOSIM_MAILING_JOIN_TITLE_TEXT" label="MOD_CCPBIOSIM_MAILING_JOIN_TITLE_LABEL" description=""/>
         <field name="mailing-join-welcome" type="textarea" default="MOD_CCPBIOSIM_MAILING_JOIN_WELCOME_TEXT" label="MOD_CCPBIOSIM_MAILING_JOIN_WELCOME_LABEL" description=""/>
         <field name="mailing-join-button" type="text" default="MOD_CCPBIOSIM_MAILING_JOIN_TEXT" label="MOD_CCPBIOSIM_MAILING_JOIN_LABEL" description=""/>
-        <field name="mailing-join-link" type="menuitem" label="MOD_CCPBIOSIM_MAILING_JOIN_MENU_LABEL" description="MOD_CCPBIOSIM_MAILING_JOIN_MENU_TEXT"/>
+        <field name="mailing-join-link" type="text" label="MOD_CCPBIOSIM_MAILING_JOIN_LINK_LABEL" description="MOD_CCPBIOSIM_MAILING_JOIN_LINK_TEXT"/>
       </fieldset>
     </fields>
   </config>

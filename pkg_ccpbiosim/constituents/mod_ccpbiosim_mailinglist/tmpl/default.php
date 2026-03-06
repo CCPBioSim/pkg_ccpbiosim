@@ -9,10 +9,6 @@ defined('_JEXEC') or die;
     <p class="mb-4">
       <?php echo $params->get('mailing-join-welcome', 'default'); ?>
     </p>
-    <?php 
-      $id = $params->get('mailing-join-link');
-      $url = JRoute::_("index.php?Itemid={$id}");
-    ?>
-    <a href="<?php echo $url; ?>" class="btn btn-primary btn-lg"><?php echo $params->get('mailing-join-button', 'default'); ?></a>
+    <a href="<?php echo $params->get('mailing-join-link'); ?>" class="btn btn-primary btn-lg"><?php echo $params->get('mailing-join-button', 'default'); ?></a>
   </div>
 </section>
