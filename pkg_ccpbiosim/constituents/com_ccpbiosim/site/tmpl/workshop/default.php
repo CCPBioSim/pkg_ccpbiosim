@@ -30,26 +30,25 @@ $wa->useStyle('com_ccpbiosim.site')
 <?php
 $json = "https://ccpbiosim.github.io/workshop.json";
 $data = json_decode(file_get_contents($json), true);
-$data_sorted = array();
+$data_sorted = array("coding" => array("catname" => "Courses for Programming"),
+                     "setup" => array("catname" => "Courses for Simulation Setup"),
+                     "simulation" => array("catname" => "Courses for Running Simulations"),
+                     "analysis" => array("catname" => "Courses for Analysing Simulations"),
+                     "advanced" => array("catname" => "Courses on Advanced Topics"));
 foreach ($data["containers"] as $course => $coursedata) {
-  $data_sorted[$coursedata["category"]][$course] = $coursedata;
+  $data_sorted[$coursedata["category"]]["courses"][$course] = $coursedata;
 }
-$mappings = array("setup" => "Courses for Simulation Setup",
-                  "simulation" => "Courses for Running Simulations",
-                  "analysis" => "Courses for Analysing Simulations",
-                  "coding" => "Courses for Programming",
-                  "advanced" => "Courses on Advanced Topics");
 ?>
 <div class="container my-5">
   <div class="accordion" id="courseAccordion">
     <?php foreach ($data_sorted as $category => $categorydata) : ?>
       <?php if ($category != "infrastructure") : ?>
         <div class="accordion-item">
-          <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo $category; ?>" aria-expanded="false"><?php echo $mappings[$category]; ?></button></h2>
+          <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo $category; ?>" aria-expanded="false"><?php echo $categorydata["catname"]; ?></button></h2>
           <div id="<?php echo $category; ?>" class="accordion-collapse collapse" data-bs-parent="#courseAccordion">
             <div class="accordion-body">
               <div class="row g-4">
-                <?php foreach ($categorydata as $course => $coursedata) : ?>
+                <?php foreach ($categorydata["courses"] as $course => $coursedata) : ?>
                   <div class="col-12 col-md-6">
                     <div class="workshopcard workshopcard-horizontal h-100" 
                       data-bs-toggle="modal" data-bs-target="#courseModal" 
