@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" method="upgrade">
   <name>CCPBioSim Hero Module</name>
-  <version>v0.5.4</version>
+  <version>v0.5.5</version>
   <author>James Gebbie-Rayet</author>
   <creationDate>2025/02/25</creationDate>
   <description>Module for showing hero banner</description>
