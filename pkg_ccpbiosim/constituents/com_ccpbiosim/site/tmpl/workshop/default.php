@@ -28,7 +28,7 @@ $wa->useStyle('com_ccpbiosim.site')
 <?php endif; ?>
 <p>We provide access to training courses that have been previously run as instructor led workshops. These courses are made available for everyone to learn about topics from the simple to the more advanced. We have categorised these below, please report any problems using our <a href="/contact">contact</a> form.</p>
 <?php
-$json = "https://ccpbiosim.github.io/workshop.json";
+$json = "https://ccpbiosim.github.io/assets.json";
 $data = json_decode(file_get_contents($json), true);
 $data_sorted = array("coding" => array("catname" => "Courses for Programming"),
                      "setup" => array("catname" => "Courses for Simulation Setup"),
@@ -61,7 +61,7 @@ foreach ($data["containers"] as $course => $coursedata) {
                       docker-pull="docker pull ghcr.io/ccpbiosim/<?php echo $course; ?>:latest"
                       docker-run="docker run -p 8888:8888 ghcr.io/ccpbiosim/<?php echo $course; ?>:latest"
                       badge-repo="https://img.shields.io/badge/github-source%20code-blue?style=for-the-badge&logo=github&link=https%3A%2F%2Fgithub.com%2Fccpbiosim%2F<?php echo $course; ?>"
-                      badge-build="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fccpbiosim.github.io%2Fworkshop.json&query=%24.containers.<?php echo $course; ?>.latest&style=for-the-badge&logo=github&label=Latest%20Build"
+                      badge-build="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fccpbiosim.github.io%2Fassets.json&query=%24.containers.<?php echo $course; ?>.latest&style=for-the-badge&logo=github&label=Latest%20Build"
                       badge-repo-link="https://github.com/CCPBioSim/<?php echo $course; ?>"
                       badge-build-link="https://github.com/CCPBioSim/<?php echo $course; ?>/pkgs/container/<?php echo $course; ?>">
                     <img src="https://via.placeholder.com/120" alt="<?php echo $course; ?>">
