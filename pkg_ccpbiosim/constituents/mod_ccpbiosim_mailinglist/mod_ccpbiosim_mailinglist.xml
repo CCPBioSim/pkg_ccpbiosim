@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" version="4.0" method="upgrade">
   <name>CCPBioSim Mailing List Module</name>
-  <version>v0.5.9</version>
+  <version>v0.5.10</version>
   <author>James Gebbie-Rayet</author>
   <creationDate>2025/02/27</creationDate>
   <description>Module for showing community mailing list</description>
