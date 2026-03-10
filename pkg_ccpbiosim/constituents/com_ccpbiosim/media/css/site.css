@@ -205,6 +205,12 @@
   font-size: 0.8rem;
 }
 
+@media (max-width: 768px) {
+  .events-date {
+    margin-bottom: 15px;
+  }
+}
+
 /* ---------------------------------------------- Workshops ---------------------------------------- */
 /* --------- Workshops view ---------*/
 
