@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="package" method="upgrade">
-  <name>CCPBioSim Package</name>
+  <name>pkg_ccpbiosim</name>
   <author>James Gebbie-Rayet</author>
   <creationDate>2026/02/27</creationDate>
   <packagename>ccpbiosim</packagename>
