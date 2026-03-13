@@ -120,6 +120,12 @@ class EventTable extends Table implements VersionableTableInterface, TaggableTab
 			$array['category'] = '';
 		}
 
+		if($array['attendance'] === '')
+		{
+			$array['attendance'] = NULL;
+			$this->attendance = NULL;
+		}
+
 		if (isset($array['params']) && is_array($array['params']))
 		{
 			$registry = new Registry;

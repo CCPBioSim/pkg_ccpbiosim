@@ -83,6 +83,11 @@ if (!$canEdit && Factory::getApplication()->getIdentity()->authorise('core.edit.
 			<td><?php echo $this->item->shorturl; ?></td>
 		</tr>
 
+		<tr>
+			<th><?php echo Text::_('COM_CCPBIOSIM_FORM_LBL_EVENT_ATTENDANCE'); ?></th>
+			<td><?php echo $this->item->attendance; ?></td>
+		</tr>
+
 	</table>
 
 </div>

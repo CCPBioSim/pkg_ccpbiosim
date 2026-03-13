@@ -70,6 +70,7 @@ $canEdit = CcpbiosimHelper::canUserEdit($this->item, $user);
         <?php echo $this->form->renderField('eventdetails'); ?>
         <?php echo $this->form->renderField('youtube'); ?>
         <?php echo $this->form->renderField('postevent'); ?>
+	<?php echo $this->form->renderField('attendance'); ?>
 
 	<?php echo HTMLHelper::_('uitab.endTab'); ?>
 			<div class="control-group">

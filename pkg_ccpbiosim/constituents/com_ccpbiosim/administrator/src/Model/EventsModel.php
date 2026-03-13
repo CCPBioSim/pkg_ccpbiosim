@@ -50,6 +50,7 @@ class EventsModel extends ListModel
 				'youtube', 'a.youtube',
 				'postevent', 'a.postevent',
 				'shorturl', 'a.shorturl',
+				'attendance', 'a.attendance',
 			);
 		}
 

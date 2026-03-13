@@ -21,6 +21,7 @@
     <field name="eventdetails" editor="|" buttons="true" filter="\Joomla\CMS\Component\ComponentHelper::filterText" type="editor" required="true" label="COM_CCPBIOSIM_FORM_LBL_EVENT_EVENTDETAILS" description="COM_CCPBIOSIM_FORM_DESC_EVENT_EVENTDETAILS" hint="COM_CCPBIOSIM_FORM_LBL_EVENT_EVENTDETAILS"/>
     <field name="youtube" validate="url" type="url" label="COM_CCPBIOSIM_FORM_LBL_EVENT_YOUTUBE" description="COM_CCPBIOSIM_FORM_DESC_EVENT_YOUTUBE" hint="COM_CCPBIOSIM_FORM_LBL_EVENT_YOUTUBE"/>
     <field name="postevent" editor="|" buttons="true" filter="\Joomla\CMS\Component\ComponentHelper::filterText" type="editor" label="COM_CCPBIOSIM_FORM_LBL_EVENT_POSTEVENT" description="COM_CCPBIOSIM_FORM_DESC_EVENT_POSTEVENT" hint="COM_CCPBIOSIM_FORM_LBL_EVENT_POSTEVENT"/>
+    <field name="attendance" filter="int" type="number" label="COM_CCPBIOSIM_FORM_LBL_EVENT_ATTENDANCE" description="COM_CCPBIOSIM_FORM_DESC_EVENT_ATTENDANCE" hint="Add how many people came"/>
     <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
   </fieldset>
 </form>
