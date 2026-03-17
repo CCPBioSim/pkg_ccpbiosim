@@ -1,19 +1,22 @@
 <updates>
   <update>
     <name>CCPBioSim</name>
-    <description>A Joomla component for custom CCPBioSim features.</description>
+    <description><![CDATA[A Joomla component for custom CCPBioSim features.]]></description>
     <element>pkg_ccpbiosim</element>
     <type>package</type>
     <version>0.6.2</version>
     <infourl title="CCPBioSim">https://github.com/ccpbiosim/pkg_ccpbiosim</infourl>
     <downloads>
-      <downloadurl type="full" format="zip">https://github.com/ccpbiosim/pkg_ccpbiosim/releases/download/0.6.2/pkg_ccpbiosim-0.6.2.zip</downloadurl>
+      <downloadurl type="full" format="zip">
+        https://github.com/ccpbiosim/pkg_ccpbiosim/releases/download/0.6.2/pkg_ccpbiosim-0.6.2.zip
+      </downloadurl>
     </downloads>
     <tags>
       <tag>stable</tag>
     </tags>
     <maintainer>CCPBioSim Dev Team</maintainer>
     <maintainerurl>https://www.ccpbiosim.ac.uk</maintainerurl>
-    <targetplatform name="joomla" version="6.[0123456789]"/>
+    <targetplatform name="joomla" version="6"/>
+    <client>administrator</client>
   </update>
 </updates>
