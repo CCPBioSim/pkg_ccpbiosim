@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" version="4.0" method="upgrade">
   <name>CCPBioSim Homepage Activities Module</name>
-  <version>0.6.5</version>
+  <version>0.6.6</version>
   <author>James Gebbie-Rayet</author>
   <creationDate>2025/02/27</creationDate>
   <description>Module for showing community activities module.</description>
