@@ -33,7 +33,7 @@ $wa->useStyle('com_ccpbiosim.site')
 
 <p>CCPBioSim stands for the Collaborative Computational Project for Biomolecular Simulation. CCPBioSim is a vibrant UK network of scientists and developers focused on advancing biomolecular simulation through training, collaboration, software support, and community events, with an emphasis on inclusivity and real-world impact.</p>
 
-<h3 class="community-card-title mb-4">Community Purpose</h3>
+<h3 class="community-card-title mb-4"><i class="bi bi-heart-fill me-2"></i>Community Purpose</h3>
 <p>The community brings together:</p>
 <ul>
   <li>Researchers and developers working on biomolecular simulation methods and tools.</li>
@@ -42,7 +42,7 @@ $wa->useStyle('com_ccpbiosim.site')
   </ul>
 
 <p>It’s intended to be inclusive and creative, encouraging participation from anyone interested in biomolecular simulation.</p>
-<h3 class="community-card-title mb-4">What the Community Does</h3>
+<h3 class="community-card-title mb-4"><i class="bi bi-gear-fill me-2"></i>What the Community Does</h3>
 <p>CCPBioSim supports its community through:</p>
 <ul>
   <li>Training workshops and tutorials to teach simulation methods and best practices.</li>
@@ -51,7 +51,7 @@ $wa->useStyle('com_ccpbiosim.site')
   <li>Monthly seminar series and other events that connect academia, industry and experimentalists.</li>
 </ul>
 
-<h3 class="community-card-title mb-4">Community Values</h3>
+<h3 class="community-card-title mb-4"><i class="bi bi-stars me-2"></i>Community Values</h3>
 <p>The CCPBioSim community emphasises:</p>
 <ul>
   <li><strong>Accessibility</strong> - lowering barriers so more people can use biomolecular simulation.</li>
@@ -59,6 +59,6 @@ $wa->useStyle('com_ccpbiosim.site')
   <li><strong>Sharing knowledge and tools</strong> - making methods, data and software more FAIR (Findable, Accessible, Interoperable, Reusable).</li>
 </ul>
 
-<h3 class="community-card-title mb-4">Links with Wider Initiatives</h3>
+<h3 class="community-card-title mb-4"><i class="bi bi-link-45deg me-2"></i>Links with Wider Initiatives</h3>
 <p>CCPBioSim contributes to national data infrastructure efforts, like integrating provenance and reproducibility for simulation data.</p>
 <p>It collaborates with other computational biology communities and projects (e.g., through consortia like DRIIMB).</p>
