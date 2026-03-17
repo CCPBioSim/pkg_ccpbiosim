@@ -4,20 +4,17 @@
   <author>James Gebbie-Rayet</author>
   <creationDate>2026-02-27</creationDate>
   <packagename>pkg_ccpbiosim</packagename>
-  <version>0.6.2</version>
+  <version>0.6.3</version>
   <url>https://github.com/ccpbiosim</url>
   <packager>CCPBioSim</packager>
   <packagerurl>https://github.com/ccpbiosim/pkg_ccpbiosim</packagerurl>
   <description>Package for the CCPBioSim website components and modules</description>
-
   <updateservers>
     <server type="extension" priority="1" name="pkg_ccpbiosim">
       https://ccpbiosim.github.io/pkg_ccpbiosim/update.xml
     </server>
   </updateservers>
-
   <blockChildUninstall>true</blockChildUninstall>
-
   <files folder="constituents">
     <file type="component" id="com_ccpbiosim">com_ccpbiosim</file>
     <file type="module" id="mod_ccpbiosim_hero" client="site">mod_ccpbiosim_hero</file>
