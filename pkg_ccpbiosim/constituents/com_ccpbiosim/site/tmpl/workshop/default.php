@@ -20,14 +20,6 @@ use Joomla\Utilities\ArrayHelper;
 $wa = $this->document->getWebAssetManager();
 $wa->useStyle('com_ccpbiosim.site')
    ->useScript('com_ccpbiosim.site');
-?>
-<?php if ($this->params->get('show_page_heading')) : ?>
-    <div class="page-header">
-        <h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
-    </div>
-<?php endif; ?>
-<p>We provide access to training courses that have been previously run as instructor led workshops. These courses are made available for everyone to learn about topics from the simple to the more advanced. We have categorised these below, please report any problems using our <a href="/contact">contact</a> form.</p>
-<?php
 $json = "https://ccpbiosim.github.io/assets.json";
 $data = json_decode(file_get_contents($json), true);
 $data_sorted = array("coding" => array("catname" => "Courses for Programming"),
@@ -39,6 +31,12 @@ foreach ($data["containers"] as $course => $coursedata) {
   $data_sorted[$coursedata["category"]]["courses"][$course] = $coursedata;
 }
 ?>
+<?php if ($this->params->get('show_page_heading')) : ?>
+    <div class="page-header">
+        <h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
+    </div>
+<?php endif; ?>
+<p>We provide access to training courses that have been previously run as instructor led workshops. These courses are made available for everyone to learn about topics from the simple to the more advanced. We have categorised these below, please report any problems using our <a href="/contact">contact</a> form.</p>
 <div class="container my-5">
   <div class="accordion" id="courseAccordion">
     <?php foreach ($data_sorted as $category => $categorydata) : ?>
