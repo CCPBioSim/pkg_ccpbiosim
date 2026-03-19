@@ -1,5 +1,4 @@
 /* ------------------------------------------- All -------------------------------------------------- */
-
 .fade-up {
   opacity: 0;
   transform: translateY(24px);
@@ -12,7 +11,6 @@
 }
 
 /* -------------------------------------- Management Team ------------------------------------------- */
-/* -------------- Card ------------ */
 .management-team-card-hover {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -21,8 +19,6 @@
   transform: translateY(-6px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
-
-/* ------------ Social ----------- */
 
 .management-team-social a {
   color: #555;
@@ -36,8 +32,6 @@
 }
 
 /* ---------------------------------------------- Core Team ---------------------------------------- */
-/* ---------- Card ---------- */
-
 .core-team-card {
   border: 1px solid #e5e7eb;
   border-radius: 0.35rem;
@@ -56,8 +50,6 @@
   display: flex;
   align-items: center;
 }
-
-/* ---------- Image ---------- */
 
 .core-team-image-wrap {
   position: relative;
@@ -89,8 +81,6 @@
   pointer-events: none;
 }
 
-/* ---------- Text ---------- */
-
 .core-team-content {
   margin-left: 1.5rem;
   flex: 1;
@@ -120,8 +110,6 @@
   margin-bottom: 0;
 }
 
-/* ---------- Mobile ---------- */
-
 @media (max-width: 575px) {
   .core-team-horizontal {
     flex-direction: column;
@@ -139,8 +127,6 @@
 }
 
 /* ---------------------------------------------- Community ---------------------------------------- */
-/* --------- Card ---------*/
-
 .community-card {
   border: 1.5px solid #dee2e6; /* visible border */
   border-radius: 0.75rem;
@@ -159,8 +145,6 @@
 }
 
 /* ---------------------------------------------- Events ---------------------------------------- */
-/* --------- Events view ---------*/
-
 .events-row {
     align-items: center;
     cursor: pointer;
@@ -212,9 +196,6 @@
 }
 
 /* ---------------------------------------------- Workshops ---------------------------------------- */
-/* --------- Workshops view ---------*/
-
-/* Smooth hover effect for cards */
 .workshopcard {
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   cursor: pointer;
@@ -228,7 +209,6 @@
   box-shadow: 0 1rem 2rem rgba(0,0,0,0.2);
 }
 
-/* Left image card layout */
 .workshopcard-horizontal {
   display: flex;
   flex-direction: row;
@@ -276,4 +256,45 @@
 .modalworkshop-summarytext {
   clear: right;
   padding-top: 5px;
+}
+
+/* ---------------------------------------------- Software ---------------------------------------- */
+.software-category-bar{
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:25px;
+}
+
+.software-category-btn{
+  margin:5px;
+}
+
+.software-card{
+  cursor:pointer;
+  transition:0.25s;
+  text-align:center;
+}
+
+.software-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+.software-logo-box{
+  height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:10px;
+}
+
+.software-logo-box img{
+  max-height:60px;
+  max-width:100%;
+}
+
+.software-modal-logo{
+  max-height:120px;
+  margin-bottom:15px;
 }
