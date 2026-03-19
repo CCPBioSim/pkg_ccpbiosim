@@ -42,7 +42,7 @@ asort($categories);
         <h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
     </div>
 <?php endif;?>
-<p>Below are upcoming events relevant to our community.</p>
+<p>Below are past events relevant to our community.</p>
 <?php if ($canCreate) : ?>
   <a href="<?php echo Route::_('index.php?option=com_ccpbiosim&task=eventform.edit&id=0', false, 0); ?>"
      class="btn btn-success btn-small"><i
