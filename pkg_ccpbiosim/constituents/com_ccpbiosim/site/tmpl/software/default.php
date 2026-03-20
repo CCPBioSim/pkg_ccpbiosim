@@ -47,7 +47,7 @@ foreach ($data["software"] as $application => $applicationdata) {
         <div class="col-md-4 product"
           data-category="<?php echo $category; ?>"
           data-name="<?php echo $appdata["name"]; ?>"
-          data-logo="/images/logos/<?php echo $appdata["image"]; ?>"
+          data-logo="/images/logos/software/<?php echo $appdata["image"]; ?>"
           data-summary="<?php echo $appdata["shortdesc"]; ?>"
           data-description="<?php echo $appdata["longdesc"]; ?>"
           data-pip="pip install <?php echo $app; ?>"
@@ -59,7 +59,7 @@ foreach ($data["software"] as $application => $applicationdata) {
             data-bs-toggle="modal"
             data-bs-target="#modal">
             <div class="card-body">
-              <div class="software-logo-box"><img src="/images/logos/<?php echo $appdata["image"]; ?>"></div>
+              <div class="software-logo-box"><img src="/images/logos/software/<?php echo $appdata["image"]; ?>"></div>
               <h5><?php echo $appdata["name"]; ?></h5>
               <p><?php echo $appdata["shortdesc"]; ?></p>
             </div>

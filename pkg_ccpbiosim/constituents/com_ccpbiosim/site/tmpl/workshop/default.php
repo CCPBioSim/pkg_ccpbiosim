@@ -54,7 +54,7 @@ foreach ($data["containers"] as $course => $coursedata) {
                       data-summary="<?php echo $coursedata["shortdesc"]; ?>"
                       data-description="<?php echo $coursedata["longdesc"]; ?>"
                       data-category="<?php echo $category; ?>"
-                      data-image="https://via.placeholder.com/400x300?text=<?php echo $course; ?>"
+                      data-image="/images/logos/training/<?php echo $category; ?>"
                       data-link="https://ccpbiosim.ac.uk/notebooks/hub/spawn?profile=<?php echo $course; ?>"
                       docker-pull="docker pull ghcr.io/ccpbiosim/<?php echo $course; ?>:latest"
                       docker-run="docker run -p 8888:8888 ghcr.io/ccpbiosim/<?php echo $course; ?>:latest"
@@ -62,7 +62,7 @@ foreach ($data["containers"] as $course => $coursedata) {
                       badge-build="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fccpbiosim.github.io%2Fassets.json&query=%24.containers.<?php echo $course; ?>.latest&style=for-the-badge&logo=github&label=Latest%20Build"
                       badge-repo-link="https://github.com/CCPBioSim/<?php echo $course; ?>"
                       badge-build-link="https://github.com/CCPBioSim/<?php echo $course; ?>/pkgs/container/<?php echo $course; ?>">
-                    <img src="https://via.placeholder.com/120" alt="<?php echo $course; ?>">
+                    <img src="/images/logos/training/<?php echo $category; ?>" alt="<?php echo $course; ?>">
                     <div class="workshopcard-body">
                       <h5 class="workshopcard-title"><?php echo $coursedata["name"]; ?></h5>
                       <p class="workshopcard-summary"><?php echo $coursedata["shortdesc"]; ?></p>
