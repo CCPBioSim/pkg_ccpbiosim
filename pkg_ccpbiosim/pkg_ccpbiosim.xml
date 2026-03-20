@@ -4,7 +4,7 @@
   <author>James Gebbie-Rayet</author>
   <creationDate>2026-02-27</creationDate>
   <packagename>pkg_ccpbiosim</packagename>
-  <version>0.7.1</version>
+  <version>0.7.2</version>
   <url>https://github.com/ccpbiosim</url>
   <packager>CCPBioSim</packager>
   <packagerurl>https://github.com/ccpbiosim/pkg_ccpbiosim</packagerurl>
