@@ -40,26 +40,27 @@ $wa->useStyle('com_ccpbiosim.site')
     </div>
 <?php endif;?>
 <p>Our core team is made up of our chair, administrative support from the chairs institution and CoSeC support staff from UKRI - STFC.</br></p>
-
-<div class="container container-md">
-  <div class="row g-4">
-    <?php foreach ($this->items as $i => $item) : ?>
-      <?php $canEdit = $user->authorise('core.edit', 'com_ccpbiosim'); ?>
-      <?php if (!$canEdit && $user->authorise('core.edit.own', 'com_ccpbiosim')): ?>
-        <?php $canEdit = Factory::getApplication()->getIdentity()->id == $item->created_by; ?>
-      <?php endif; ?>
-      <div class="col-12 col-md-6 fade-up">
-        <div class="core-team-card core-team-horizontal">
-          <div class="core-team-image-wrap">
-            <img src="<?php echo Uri::root() . $item->profilephoto; ?>" alt="<?php echo $item->title; ?> <?php echo $item->firstname; ?> <?php echo $item->surname; ?>">
-          </div>
-          <div class="core-team-content">
-            <div class="core-team-name"><?php echo $item->title; ?> <?php echo $item->firstname; ?> <?php echo $item->surname; ?></div>
-            <div class="core-team-institution"><?php echo $item->insitution; ?></div>
-            <p class="core-team-bio"><?php echo $item->role; ?></p>
-          </div>
+<div class="row g-0 staff-bios-grid">
+  <?php foreach ($this->items as $i => $item) : ?>
+    <?php $canEdit = $user->authorise('core.edit', 'com_ccpbiosim'); ?>
+    <?php if (!$canEdit && $user->authorise('core.edit.own', 'com_ccpbiosim')): ?>
+      <?php $canEdit = Factory::getApplication()->getIdentity()->id == $item->created_by; ?>
+    <?php endif; ?>
+    <div class="col-12 col-md-6 col-lg-4 bio-col">
+      <div class="staff-bio-card">
+        <div class="staff-bio-avatar mb-3">
+          <img src="<?php echo Uri::root() . $item->profilephoto; ?>" alt="<?php echo $item->title; ?> <?php echo $item->firstname; ?> <?php echo $item->surname; ?>">
         </div>
+        <div class="bio-dept"><?php echo $item->insitution; ?></div>
+        <h2 class="bio-name"><?php echo $item->title; ?> <?php echo $item->firstname; ?> <?php echo $item->surname; ?></h2>
+        <p class="bio-jobtitle">JobTitle</p>
+        <div class="bio-rule"></div>
+        <p class="bio-body"><?php echo $item->role; ?></p>
+        <nav class="bio-links">
+          <a href="#">GitHub <span class="fa fa-github" aria-hidden="true"></span></a>
+          <a href="#">LinkedIn <span class="fa fa-external-link" aria-hidden="true"></span></a>
+        </nav>
       </div>
-    <?php endforeach; ?>
-  </div>
+    </div>
+  <?php endforeach; ?>
 </div>
