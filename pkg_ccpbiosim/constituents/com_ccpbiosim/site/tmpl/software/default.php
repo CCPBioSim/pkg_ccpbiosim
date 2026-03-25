@@ -48,11 +48,13 @@ foreach ($data["software"] as $application => $applicationdata) {
           data-authors="Authors: <?php echo $appdata["authors"]; ?>"
           data-category="<?php echo $category; ?>"
           data-conda="conda install -c CCPBioSim <?php echo $app; ?>"
+          data-condatoggle="<?php echo $appdata["conda"]; ?>"
           data-description="<?php echo $appdata["longdesc"]; ?>"
           data-docs="<?php echo $appdata["docs"]; ?>"
           data-logo="/images/logos/software/<?php echo $appdata["image"]; ?>"
           data-name="<?php echo $appdata["name"]; ?>"
           data-pip="pip install <?php echo $app; ?>"
+          data-piptoggle="<?php echo $appdata["pypi"]; ?>"
           data-source="<?php echo $appdata["github"]; ?>"
           data-summary="<?php echo $appdata["shortdesc"]; ?>">
           <div class="card software-card h-100"
@@ -89,10 +91,14 @@ foreach ($data["software"] as $application => $applicationdata) {
           </div>
         </div>
         <p id="modalDescription"></p>
-        <p>Install by Pip</p>
-        <code id="modalPip"></code>
-        <p style="padding-top: 10px;">Install by Conda</p>
-        <code id="modalConda"></code>
+        <div id="pip" style="display: none">
+          <p>Install by Pip</p>
+          <code id="modalPip"></code>
+        </div>
+        <div id="conda" style="display: none">
+          <p style="padding-top: 10px;">Install by Conda</p>
+          <code id="modalConda"></code>
+        </div>
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -116,6 +122,8 @@ const modalConda = document.getElementById("modalConda");
 const modalSource = document.getElementById("modalSource");
 const modalDocs = document.getElementById("modalDocs");
 const modalAuthors = document.getElementById("modalAuthors");
+const pipToggle = document.getElementById("pip");
+const condaToggle = document.getElementById("conda");
 
 products.forEach(product => {
   product.addEventListener("click", () => {
@@ -128,6 +136,8 @@ products.forEach(product => {
     modalAuthors.innerText = product.dataset.authors;
     modalSource.href = product.dataset.source;
     modalDocs.href = product.dataset.docs;
+    if(product.dataset.piptoggle) pipToggle.style.display = "block";
+    if(product.dataset.condatoggle) condaToggle.style.display = "block";
   });
 });
 
