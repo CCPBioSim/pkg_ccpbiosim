@@ -57,8 +57,8 @@ $wa->useStyle('com_ccpbiosim.site')
         <div class="bio-rule"></div>
         <p class="bio-body"><?php echo $item->role; ?></p>
         <nav class="bio-links">
-          <a href="#">GitHub <span class="fa fa-github" aria-hidden="true"></span></a>
-          <a href="#">LinkedIn <span class="fa fa-external-link" aria-hidden="true"></span></a>
+          <a href="#" id="github" target="_blank" class="btn btn-secondary">GitHub</a>
+          <a href="#" id="linkedin" target="_blank" class="btn btn-info">LinkedIn</a>
         </nav>
       </div>
     </div>

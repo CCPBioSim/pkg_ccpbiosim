@@ -154,29 +154,6 @@
   margin-top: auto;
 }
 
-.bio-links a {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--bs-body-color, #212529);
-  text-decoration: none;
-  border-bottom: 1px solid var(--bs-border-color, #dee2e6);
-  padding-bottom: 2px;
-  transition: color 0.2s, border-color 0.2s;
-}
-
-.bio-links a:hover {
-  color: var(--cassiopeia-color-hover, var(--cassiopeia-color-primary, #0088cc));
-  border-color: var(--cassiopeia-color-hover, var(--cassiopeia-color-primary, #0088cc));
-}
-
-.bio-links a .fa {
-  font-size: 0.6rem;
-  margin-left: 3px;
-  vertical-align: middle;
-}
-
 .bio-col.featured .bio-name {
   font-size: 1.5rem;
 }
