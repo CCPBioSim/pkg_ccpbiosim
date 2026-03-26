@@ -36,9 +36,9 @@ foreach ($data["software"] as $application => $applicationdata) {
 <p>Our software packages that are actively maintained by our core CoSeC support team:</p>
 <div class="container mt-5">
   <div class="software-category-bar text-center">
-    <button class="btn software-btn-outline-primary software-category-btn active" data-category="all">All</button>
+    <button class="btn software-btn-outline-primary software-category-btn active" data-category="all" style="--btn-border-color: var(--btnbg);">All</button>
     <?php foreach ($data_sorted as $category => $categorydata) : ?>
-      <button class="btn software-btn-outline-primary software-category-btn" data-category="<? echo $category; ?>"><?php echo $categorydata["catname"]; ?></button>
+      <button class="btn software-btn-outline-primary software-category-btn" data-category="<? echo $category; ?>" style="--btn-border-color: var(--btnbg);"><?php echo $categorydata["catname"]; ?></button>
     <? endforeach ?>
   </div>
   <div class="row g-4">
