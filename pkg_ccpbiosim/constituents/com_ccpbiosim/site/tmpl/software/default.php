@@ -36,16 +36,16 @@ foreach ($data["software"] as $application => $applicationdata) {
 <p>Our software packages that are actively maintained by our core CoSeC support team:</p>
 <div class="container mt-5">
   <div class="software-category-bar text-center">
-    <button class="btn btn-outline-primary software-category-btn active" data-category="all">All</button>
+    <button class="btn software-btn-outline-primary software-category-btn active" data-category="all">All</button>
     <?php foreach ($data_sorted as $category => $categorydata) : ?>
-      <button class="btn btn-outline-primary software-category-btn" data-category="<? echo $category; ?>"><?php echo $categorydata["catname"]; ?></button>
+      <button class="btn software-btn-outline-primary software-category-btn" data-category="<? echo $category; ?>"><?php echo $categorydata["catname"]; ?></button>
     <? endforeach ?>
   </div>
   <div class="row g-4">
     <?php foreach ($data_sorted as $category => $categorydata) : ?>
       <?php foreach ($categorydata["software"] as $app => $appdata) : ?>
         <div class="col-md-4 product"
-          data-authors="Authors: <?php echo $appdata["authors"]; ?>"
+          data-authors="<? echo htmlspecialchars(json_encode($appdata['authors'])) ?>"
           data-category="<?php echo $category; ?>"
           data-conda="conda install -c CCPBioSim <?php echo $app; ?>"
           data-condatoggle="<?php echo $appdata["conda"]; ?>"
@@ -86,7 +86,8 @@ foreach ($data["software"] as $application => $applicationdata) {
             </div>
             <div class="col">
               <p id="modalSummary" class="fw-bold modalsoftware-summarytext"></p>
-              <p id="modalAuthors" class="fw-bold modalsoftware-authors"></p>
+              <p>Authors</p>
+              <div id="modalAuthors" style="margin-bottom: 10px;"></div>
             </div>
           </div>
         </div>
@@ -103,7 +104,7 @@ foreach ($data["software"] as $application => $applicationdata) {
       <div class="modal-footer">
         <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <a href="#" id="modalSource" target="_blank" class="btn btn-primary">Source Code</a>
-        <a href="#" id="modalDocs" target="_blank" class="btn btn-success">Documentation</a>
+        <a href="#" id="modalDocs" target="_blank" class="btn btn-primary">Documentation</a>
       </div>
     </div>
   </div>
@@ -133,11 +134,20 @@ products.forEach(product => {
     modalLogo.src = product.dataset.logo;
     modalPip.innerText = product.dataset.pip;
     modalConda.innerText = product.dataset.conda;
-    modalAuthors.innerText = product.dataset.authors;
     modalSource.href = product.dataset.source;
     modalDocs.href = product.dataset.docs;
     if(product.dataset.piptoggle) pipToggle.style.display = "block";
     if(product.dataset.condatoggle) condaToggle.style.display = "block";
+    modalAuthors.innerHTML = Object.entries(JSON.parse(product.dataset.authors))
+      .map(([name, url]) => `
+        <span class="author">
+          <span class="author-name">${name}</span>
+          ${url ? `
+            <a href="${url}" target="_blank" rel="noopener" title="View ${name} on ORCID"><img src="/images/logos/vendors/orcid.svg" alt="ORCID profile" width="16" height="16"></a>
+          ` : ''}
+        </span>
+      `)
+      .join(', ');
   });
 });
 
