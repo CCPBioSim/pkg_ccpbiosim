@@ -22,7 +22,7 @@
         <field name="actvties-ttleblock3" type="text" default="MOD_CCPBIOSIM_ACTIVITIES_TITLE3_TEXT" label="MOD_CCPBIOSIM_ACTIVITIES_TITLE3_LABEL" description=""/>
         <field name="actvties-descblock3" type="textarea" default="MOD_CCPBIOSIM_ACTIVITIES_DESC3_TEXT" label="MOD_CCPBIOSIM_ACTIVITIES_DESC3_LABEL" description=""/>
         <field name="actvties-ttleblock4" type="text" default="MOD_CCPBIOSIM_ACTIVITIES_TITLE4_TEXT" label="MOD_CCPBIOSIM_ACTIVITIES_TITLE4_LABEL" description=""/>
-        <field name="actvties-descblock5" type="textarea" default="MOD_CCPBIOSIM_ACTIVITIES_DESC4_TEXT" label="MOD_CCPBIOSIM_ACTIVITIES_DESC4_LABEL" description=""/>
+        <field name="actvties-descblock4" type="textarea" default="MOD_CCPBIOSIM_ACTIVITIES_DESC4_TEXT" label="MOD_CCPBIOSIM_ACTIVITIES_DESC4_LABEL" description=""/>
       </fieldset>
     </fields>
   </config>
