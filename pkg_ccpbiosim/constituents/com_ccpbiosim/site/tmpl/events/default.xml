@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-  	<layout title="COM_CCPBIOSIM_TITLE_LIST_VIEW_EVENTS" option="View">
-      <message><![CDATA[COM_CCPBIOSIM_TITLE_LIST_VIEW_EVENTS_DESC]]></message>
-	  </layout>
-    <fields name="request">
-        <fieldset name="request">
-            <field
-                name="_layout"
-                type="list"
-                label="Layouts"
-                description="Available View Layouts"
-                required="true"
-            >
-                <option value="-1">Choose a Layout</option>
-                <option value="default">Default</option>
-                <option value="all-accordion">All Events Accordion</option>
-                <option value="upcoming-accordion">Upcoming Accordion</option>
-                <option value="previous-accordion">Previous Accordion</option>
-                <option value="list">List</option>
-            </field>
-        </fieldset>
-    </fields>
+  <layout title="COM_CCPBIOSIM_TITLE_LIST_VIEW_EVENTS" option="View">
+    <message><![CDATA[COM_CCPBIOSIM_TITLE_LIST_VIEW_EVENTS_DESC]]></message>
+  </layout>
+  <fields name="params">
+    <fieldset name="basic">
+      <field
+        name="layout"
+        type="list"
+        label="Layouts"
+        description="Available View Layouts"
+        required="true"
+        default="default">
+          <option value="default">Default</option>
+          <option value="all-accordion">All Events Accordion</option>
+          <option value="upcoming-accordion">Upcoming Accordion</option>
+          <option value="previous-accordion">Previous Accordion</option>
+          <option value="list">List</option>
+      </field>
+    </fieldset>
+  </fields>
 </metadata>
+

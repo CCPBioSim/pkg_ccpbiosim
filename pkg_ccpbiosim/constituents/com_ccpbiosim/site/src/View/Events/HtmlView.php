@@ -19,11 +19,8 @@ use \Joomla\CMS\Language\Text;
 class HtmlView extends BaseHtmlView
 {
 	protected $items;
-
 	protected $pagination;
-
 	protected $state;
-
 	protected $params;
 
 	/**
@@ -37,24 +34,38 @@ class HtmlView extends BaseHtmlView
 	 */
 	public function display($tpl = null)
 	{
-		$app = Factory::getApplication();
+          $app = Factory::getApplication();
+          $menu   = $app->getMenu()->getActive();
 
-		$this->state = $this->get('State');
-		$this->items = $this->get('Items');
-		$this->pagination = $this->get('Pagination');
-		$this->params = $app->getParams('com_ccpbiosim');
-		$this->layout = $app->getInput()->get('_layout', 'default', 'STRING');
-                $this->setLayout($this->layout);
+          // Get the active menu item params
+          $menuParams = new \Joomla\Registry\Registry();
 
-		// Check for errors.
-		if (count($errors = $this->get('Errors')))
-		{
-			throw new \Exception(implode("\n", $errors));
-		}
+          if ($menu) {
+            $menuParams = $menu->getParams();
+          }
 
-		$this->_prepareDocument();
-		parent::display($tpl);
-	}
+          // Merge with component params if needed
+          $componentParams = $app->getParams('com_mycomponent');
+          $menuParams->merge($componentParams);
+
+          $this->params = $menuParams;
+
+          $this->state = $this->get('State');
+          $this->items = $this->get('Items');
+          $this->pagination = $this->get('Pagination');
+
+          $layout = $this->params->get('layout', 'default');
+          $this->setLayout($layout);
+
+          // Check for errors.
+          if (count($errors = $this->get('Errors')))
+          {
+            throw new \Exception(implode("\n", $errors));
+          }
+
+          $this->_prepareDocument();
+          parent::display($tpl);
+        }
 
 	/**
 	 * Prepares the document
