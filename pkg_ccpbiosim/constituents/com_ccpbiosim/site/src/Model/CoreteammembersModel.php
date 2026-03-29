@@ -35,6 +35,10 @@ class CoreteammembersModel extends ListModel
 	 */
 	public function __construct($config = array())
 	{
+		if (empty($config['context'])) {
+                  $config['context'] = 'com_ccpbiosim.site.coreteammembers';
+                }
+		
 		if (empty($config['filter_fields']))
 		{
 			$config['filter_fields'] = array(
@@ -76,13 +80,15 @@ class CoreteammembersModel extends ListModel
 	 * @throws  Exception
 	 *
 	 */
-	protected function populateState($ordering = null, $direction = null)
+	protected function populateState($ordering = 'a.ordering', $direction = 'ASC')
 	{
 		// List state information.
-		parent::populateState('a.id', 'ASC');
+		parent::populateState('a.ordering', 'ASC');
 
 		$app = Factory::getApplication();
 		$list = $app->getUserState($this->context . '.list');
+		$app->setUserState($this->context . '.list.ordering', 'a.ordering');
+                $app->setUserState($this->context . '.list.direction', 'ASC');
 
 		$value = $app->getUserState($this->context . '.list.limit', $app->get('list_limit', 25));
 		$list['limit'] = $value;
@@ -92,7 +98,7 @@ class CoreteammembersModel extends ListModel
 		$value = $app->input->get('limitstart', 0, 'uint');
 		$this->setState('list.start', $value);
 
-		$ordering  = $this->getUserStateFromRequest($this->context .'.filter_order', 'filter_order', 'a.id');
+		$ordering  = $this->getUserStateFromRequest($this->context .'.filter_order', 'filter_order', 'a.ordering');
 		$direction = strtoupper($this->getUserStateFromRequest($this->context .'.filter_order_Dir', 'filter_order_Dir', 'ASC'));
 		
 		if(!empty($ordering) || !empty($direction))
@@ -173,8 +179,8 @@ class CoreteammembersModel extends ListModel
 			
 			
 			// Add the list ordering clause.
-			$orderCol  = $this->state->get('list.ordering', 'a.id');
-			$orderDirn = $this->state->get('list.direction', 'ASC');
+			$orderCol  = $this->state->get('list.ordering', 'a.ordering');
+                        $orderDirn = $this->state->get('list.direction', 'ASC');
 
 			if ($orderCol && $orderDirn)
 			{
