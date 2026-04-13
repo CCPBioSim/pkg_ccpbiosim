@@ -83,7 +83,7 @@ jobs:
           zip -r pkg_ccpbiosim-${{ github.event.inputs.version }}.zip pkg_ccpbiosim
 
       - name: Create release
-        uses: softprops/action-gh-release@v2.6.1
+        uses: softprops/action-gh-release@v3.0.0
         with:
           name: v${{ github.event.inputs.version }}
           generate_release_notes: true
