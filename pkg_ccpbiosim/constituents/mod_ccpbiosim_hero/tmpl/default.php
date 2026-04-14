@@ -103,6 +103,11 @@ defined('_JEXEC') or die;
             $url = JRoute::_("index.php?Itemid={$id}");
           ?>
           <a href="<?php echo $url; ?>" class="btn btn-outline-light btn-lg"><?php echo $params->get('hero-events-button', 'default'); ?></a>
+          <?php 
+            $id = $params->get('hero-training-link');
+            $url = JRoute::_("index.php?Itemid={$id}");
+          ?>
+          <a href="<?php echo $url; ?>" class="btn btn-outline-light btn-lg"><?php echo $params->get('hero-training-button', 'default'); ?></a>
         </div>
       </div>
     </div>
