@@ -4,6 +4,7 @@
     <description><![CDATA[A Joomla component for custom CCPBioSim features.]]></description>
     <element>pkg_ccpbiosim</element>
     <type>package</type>
+    <client>site</client>
     <version>0.8.4</version>
     <infourl title="CCPBioSim">https://github.com/ccpbiosim/pkg_ccpbiosim</infourl>
     <downloads>
