@@ -3,7 +3,7 @@
   <name>CCPBioSim Package</name>
   <author>James Gebbie-Rayet</author>
   <creationDate>2026-02-27</creationDate>
-  <packagename>pkg_ccpbiosim</packagename>
+  <packagename>ccpbiosim</packagename>
   <version>0.8.2</version>
   <url>https://github.com/ccpbiosim</url>
   <packager>CCPBioSim</packager>
