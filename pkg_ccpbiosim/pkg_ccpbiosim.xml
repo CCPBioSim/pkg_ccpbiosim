@@ -15,8 +15,9 @@
   <blockChildUninstall>true</blockChildUninstall>
   <files folder="constituents">
     <file type="component" id="com_ccpbiosim">com_ccpbiosim</file>
+    <file type="module" id="mod_ccpbiosim_activities" client="site">mod_ccpbiosim_activities</file>
     <file type="module" id="mod_ccpbiosim_hero" client="site">mod_ccpbiosim_hero</file>
     <file type="module" id="mod_ccpbiosim_mailinglist" client="site">mod_ccpbiosim_mailinglist</file>
-    <file type="module" id="mod_ccpbiosim_activities" client="site">mod_ccpbiosim_activities</file>
+    <file type="module" id="mod_ccpbiosim_youtube" client="site">mod_ccpbiosim_youtube</file>
   </files>
 </extension>
