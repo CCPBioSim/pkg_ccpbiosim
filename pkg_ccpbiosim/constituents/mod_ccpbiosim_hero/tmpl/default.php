@@ -1,8 +1,5 @@
 <?php
 defined('_JEXEC') or die;
-
-$wa = $this->document->getWebAssetManager();
-$wa->useStyle('com_ccpbiosim.site');
 ?>
 
 <header class="hero d-flex align-items-center">

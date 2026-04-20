@@ -22,6 +22,10 @@ class Dispatcher implements DispatcherInterface
     {
         $this->module = $module;
         $this->app = $app;
+
+        $wa  = $app->getDocument()->getWebAssetManager();
+        $wa->getRegistry()->addExtensionRegistryFile('com_ccpbiosim');
+        $wa->useStyle('com_ccpbiosim.site');
     }
 
     public function dispatch()

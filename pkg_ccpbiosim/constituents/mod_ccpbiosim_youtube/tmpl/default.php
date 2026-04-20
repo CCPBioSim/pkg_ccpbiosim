@@ -17,9 +17,6 @@ $autoplay   = (bool) $params->get('autoplay', 0);
 $autoplayMs = (int)  $params->get('autoplay_interval', 5000);
 
 $uid = 'mod-ccpbiosim-yt-' . $module->id;
-
-$wa = $this->document->getWebAssetManager();
-$wa->useStyle('com_ccpbiosim.site');
 ?>
 
 <div id="<?php echo $uid; ?>"
