@@ -9,28 +9,28 @@ if (empty($videos)) {
     return;
 }
 
-$showTitle   = (bool) $params->get('show_title', 1);
-$showDesc    = (bool) $params->get('show_description', 1);
-$descLength  = (int)  $params->get('description_length', 120);
-$openIn      = htmlspecialchars($params->get('open_in', '_blank'), ENT_QUOTES, 'UTF-8');
-$autoplay    = (bool) $params->get('autoplay', 0);
-$autoplayMs  = (int)  $params->get('autoplay_interval', 5000);
+$showTitle  = (bool) $params->get('show_title', 1);
+$showDesc   = (bool) $params->get('show_description', 1);
+$descLength = (int)  $params->get('description_length', 120);
+$openIn     = htmlspecialchars($params->get('open_in', '_blank'), ENT_QUOTES, 'UTF-8');
+$autoplay   = (bool) $params->get('autoplay', 0);
+$autoplayMs = (int)  $params->get('autoplay_interval', 5000);
 
 $uid = 'mod-ccpbiosim-yt-' . $module->id;
 ?>
 
 <div id="<?php echo $uid; ?>"
-     class="mod-ccpbiosim-youtube"
+     class="youtube_mod"
      data-autoplay="<?php echo $autoplay ? 'true' : 'false'; ?>"
      data-interval="<?php echo $autoplayMs; ?>"
      role="region"
      aria-label="<?php echo Text::_('MOD_CCPBIOSIM_YOUTUBE_ARIA_LABEL'); ?>">
 
     <?php foreach ($videos as $index => $video) :
-        $safeTitle   = htmlspecialchars($video->title,    ENT_QUOTES, 'UTF-8');
-        $safeThumb   = htmlspecialchars($video->thumbnail, ENT_QUOTES, 'UTF-8');
-        $safeUrl     = htmlspecialchars($video->url,       ENT_QUOTES, 'UTF-8');
-        $safeEmbed   = htmlspecialchars($video->embedUrl,  ENT_QUOTES, 'UTF-8');
+        $safeTitle   = htmlspecialchars($video->title,        ENT_QUOTES, 'UTF-8');
+        $safeThumb   = htmlspecialchars($video->thumbnail,    ENT_QUOTES, 'UTF-8');
+        $safeUrl     = htmlspecialchars($video->url,          ENT_QUOTES, 'UTF-8');
+        $safeEmbed   = htmlspecialchars($video->embedUrl,     ENT_QUOTES, 'UTF-8');
         $safeChannel = htmlspecialchars($video->channelTitle, ENT_QUOTES, 'UTF-8');
 
         $desc = $video->description;
@@ -47,43 +47,50 @@ $uid = 'mod-ccpbiosim-yt-' . $module->id;
             } catch (\Exception $e) {}
         }
 
-        $views = !empty($video->viewCount)
-            ? number_format((int) $video->viewCount)
-            : '';
-
+        $views   = !empty($video->viewCount) ? number_format((int) $video->viewCount) : '';
         $isFirst = $index === 0;
     ?>
-    <div class="ytc-slide<?php echo $isFirst ? ' active' : ''; ?>"
+    <div class="youtube_mod_slide<?php echo $isFirst ? ' active' : ''; ?>"
          role="listitem"
          aria-label="<?php echo Text::sprintf('MOD_CCPBIOSIM_YOUTUBE_SLIDE_LABEL', $index + 1, count($videos)); ?>"
          aria-hidden="<?php echo $isFirst ? 'false' : 'true'; ?>">
 
         <div class="card border-0 shadow-sm">
 
-            <div class="ytc-thumb-wrap">
+            <!-- Thumbnail — swapped out for the iframe when play is clicked -->
+            <div class="youtube_mod_thumb_wrap">
                 <img src="<?php echo $safeThumb; ?>"
                      alt="<?php echo $safeTitle; ?>"
-                     class="card-img-top"
+                     class="youtube_mod_thumb card-img-top"
                      loading="lazy"
                      width="480"
                      height="270" />
 
-                <button class="ytc-play-btn"
+                <button class="youtube_mod_play_btn"
                         type="button"
                         data-embed="<?php echo $safeEmbed; ?>"
                         data-title="<?php echo $safeTitle; ?>"
                         aria-label="<?php echo Text::sprintf('MOD_CCPBIOSIM_YOUTUBE_PLAY_ARIA', $safeTitle); ?>">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48" aria-hidden="true" focusable="false">
-                        <path class="ytc-play-bg" d="M66.5 7.8a8.5 8.5 0 0 0-6-6C56 .5 34 .5 34 .5S12 .5 7.5 1.8a8.5 8.5 0 0 0-6 6C.3 10.3 0 16.9 0 24s.3 13.7 1.5 16.2a8.5 8.5 0 0 0 6 6C12 47.5 34 47.5 34 47.5s22 0 26.5-1.3a8.5 8.5 0 0 0 6-6C67.7 37.7 68 31.1 68 24s-.3-13.7-1.5-16.2z"/>
-                        <path class="ytc-play-arrow" d="M45 24 27 14v20z"/>
+                        <path class="youtube_mod_play_bg"    d="M66.5 7.8a8.5 8.5 0 0 0-6-6C56 .5 34 .5 34 .5S12 .5 7.5 1.8a8.5 8.5 0 0 0-6 6C.3 10.3 0 16.9 0 24s.3 13.7 1.5 16.2a8.5 8.5 0 0 0 6 6C12 47.5 34 47.5 34 47.5s22 0 26.5-1.3a8.5 8.5 0 0 0 6-6C67.7 37.7 68 31.1 68 24s-.3-13.7-1.5-16.2z"/>
+                        <path class="youtube_mod_play_arrow" d="M45 24 27 14v20z"/>
                     </svg>
                 </button>
+            </div>
+
+            <!-- Inline player — hidden until play is clicked, replaces the thumbnail area -->
+            <div class="youtube_mod_player ratio ratio-16x9" style="display:none;">
+                <iframe src=""
+                        title=""
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                </iframe>
             </div>
 
             <div class="card-body">
 
                 <?php if ($showTitle) : ?>
-                <h5 class="card-title ytc-title fw-semibold mb-2">
+                <h5 class="card-title youtube_mod_title fw-semibold mb-2">
                     <a href="<?php echo $safeUrl; ?>"
                        target="<?php echo $openIn; ?>"
                        rel="noopener noreferrer">
@@ -93,7 +100,7 @@ $uid = 'mod-ccpbiosim-yt-' . $module->id;
                 <?php endif; ?>
 
                 <?php if ($showDesc && !empty($safeDesc)) : ?>
-                <p class="card-text text-muted small ytc-desc mb-3">
+                <p class="card-text text-muted small youtube_mod_desc mb-3">
                     <?php echo $safeDesc; ?>
                 </p>
                 <?php endif; ?>
@@ -108,13 +115,14 @@ $uid = 'mod-ccpbiosim-yt-' . $module->id;
                     <?php endif; ?>
                 </div>
 
-            </div>
+            </div><!-- /.card-body -->
 
-        </div>
+        </div><!-- /.card -->
 
-    </div>
+    </div><!-- /.youtube_mod_slide -->
     <?php endforeach; ?>
 
+    <!-- Carousel controls -->
     <div class="d-flex align-items-center justify-content-center gap-2 mt-3"
          aria-label="<?php echo Text::_('MOD_CCPBIOSIM_YOUTUBE_CONTROLS_ARIA'); ?>">
 
@@ -129,14 +137,14 @@ $uid = 'mod-ccpbiosim-yt-' . $module->id;
             </svg>
         </button>
 
-        <div class="ytc-dots d-flex gap-2"
+        <div class="youtube_mod_dots d-flex gap-2"
              role="tablist"
              aria-label="<?php echo Text::_('MOD_CCPBIOSIM_YOUTUBE_DOTS_ARIA'); ?>"
              id="<?php echo $uid; ?>-dots">
             <?php foreach ($videos as $index => $video) : ?>
             <button type="button"
                     role="tab"
-                    class="ytc-dot<?php echo $index === 0 ? ' active' : ''; ?>"
+                    class="youtube_mod_dot<?php echo $index === 0 ? ' active' : ''; ?>"
                     aria-selected="<?php echo $index === 0 ? 'true' : 'false'; ?>"
                     aria-label="<?php echo Text::sprintf('MOD_CCPBIOSIM_YOUTUBE_DOT_ARIA', $index + 1); ?>"
                     data-index="<?php echo $index; ?>">
@@ -154,43 +162,23 @@ $uid = 'mod-ccpbiosim-yt-' . $module->id;
             </svg>
         </button>
 
+    </div><!-- /.controls -->
+
+    <!-- Autoplay progress bar -->
+    <div class="youtube_mod_progress mt-2" aria-hidden="true">
+        <div class="youtube_mod_bar" id="<?php echo $uid; ?>-bar"></div>
     </div>
 
-    <div class="ytc-progress mt-2" aria-hidden="true">
-        <div class="ytc-bar" id="<?php echo $uid; ?>-bar"></div>
-    </div>
-
-</div>
-
-<div id="<?php echo $uid; ?>-lightbox"
-     class="ytc-lightbox"
-     style="display:none;"
-     role="dialog"
-     aria-modal="true"
-     aria-label="<?php echo Text::_('MOD_CCPBIOSIM_YOUTUBE_LIGHTBOX_ARIA'); ?>">
-    <div class="ytc-lightbox-inner">
-        <button class="ytc-lightbox-close btn-close btn-close-white"
-                type="button"
-                id="<?php echo $uid; ?>-close"
-                aria-label="<?php echo Text::_('MOD_CCPBIOSIM_YOUTUBE_CLOSE'); ?>">
-        </button>
-        <div class="ytc-player ratio ratio-16x9">
-            <iframe id="<?php echo $uid; ?>-iframe"
-                    src=""
-                    title=""
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    loading="lazy">
-            </iframe>
-        </div>
-    </div>
-</div>
+</div><!-- /.youtube_mod -->
 
 <style>
-#<?php echo $uid; ?> .ytc-slide          { display: none; }
-#<?php echo $uid; ?> .ytc-slide.active   { display: block; }
+/* ── mod_ccpbiosim_youtube — Bootstrap 5 ────────────────────────────────── */
 
-#<?php echo $uid; ?> .ytc-thumb-wrap {
+.youtube_mod_slide        { display: none; }
+.youtube_mod_slide.active { display: block; }
+
+/* Thumbnail wrapper — 16:9 aspect ratio, clips zoom-on-hover */
+.youtube_mod_thumb_wrap {
     position: relative;
     aspect-ratio: 16 / 9;
     overflow: hidden;
@@ -198,114 +186,111 @@ $uid = 'mod-ccpbiosim-yt-' . $module->id;
     border-radius: var(--bs-card-inner-border-radius, .375rem) var(--bs-card-inner-border-radius, .375rem) 0 0;
 }
 
-#<?php echo $uid; ?> .ytc-thumb-wrap img {
+.youtube_mod_thumb {
     width: 100%; height: 100%;
     object-fit: cover; display: block;
     transition: transform .4s ease, opacity .4s ease;
 }
 
-#<?php echo $uid; ?> .card:hover .ytc-thumb-wrap img {
+.youtube_mod_slide .card:hover .youtube_mod_thumb {
     transform: scale(1.04);
     opacity: .88;
 }
 
-#<?php echo $uid; ?> .ytc-play-btn {
+/* Play button overlay */
+.youtube_mod_play_btn {
     position: absolute; inset: 0;
     display: flex; align-items: center; justify-content: center;
     background: transparent; border: none; cursor: pointer; padding: 0;
 }
 
-#<?php echo $uid; ?> .ytc-play-btn svg {
+.youtube_mod_play_btn svg {
     width: 68px; height: 48px;
     filter: drop-shadow(0 2px 8px rgba(0,0,0,.5));
     transition: transform .2s ease, filter .2s ease;
 }
 
-#<?php echo $uid; ?> .ytc-play-btn:hover svg,
-#<?php echo $uid; ?> .ytc-play-btn:focus-visible svg {
+.youtube_mod_play_btn:hover svg,
+.youtube_mod_play_btn:focus-visible svg {
     transform: scale(1.1);
     filter: drop-shadow(0 4px 16px rgba(0,0,0,.7));
 }
 
-#<?php echo $uid; ?> .ytc-play-bg    { fill: rgba(20,20,20,.78); transition: fill .2s; }
-#<?php echo $uid; ?> .ytc-play-btn:hover .ytc-play-bg { fill: #dc3545; }
-#<?php echo $uid; ?> .ytc-play-arrow { fill: #fff; }
+.youtube_mod_play_bg    { fill: rgba(20,20,20,.78); transition: fill .2s; }
+.youtube_mod_play_btn:hover .youtube_mod_play_bg { fill: #dc3545; }
+.youtube_mod_play_arrow { fill: #fff; }
 
-#<?php echo $uid; ?> .ytc-title {
+/* Inline player — Bootstrap ratio handles 16:9 sizing */
+.youtube_mod_player {
+    border-radius: var(--bs-card-inner-border-radius, .375rem) var(--bs-card-inner-border-radius, .375rem) 0 0;
+    overflow: hidden;
+}
+
+.youtube_mod_player iframe {
+    border: none;
+}
+
+/* Title: clamp to 2 lines */
+.youtube_mod_title {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-#<?php echo $uid; ?> .ytc-title a            { color: inherit; text-decoration: none; }
-#<?php echo $uid; ?> .ytc-title a:hover,
-#<?php echo $uid; ?> .ytc-title a:focus      { color: #dc3545; text-decoration: underline; }
+.youtube_mod_title a           { color: inherit; text-decoration: none; }
+.youtube_mod_title a:hover,
+.youtube_mod_title a:focus     { color: #dc3545; text-decoration: underline; }
 
-#<?php echo $uid; ?> .ytc-desc {
+/* Description: clamp to 3 lines */
+.youtube_mod_desc {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-#<?php echo $uid; ?> .ytc-dot {
+/* Dot indicators */
+.youtube_mod_dot {
     width: 10px; height: 10px; border-radius: 50%;
     border: 2px solid #adb5bd; background: transparent;
     padding: 0; cursor: pointer;
     transition: background .2s, border-color .2s, transform .2s;
 }
 
-#<?php echo $uid; ?> .ytc-dot.active,
-#<?php echo $uid; ?> .ytc-dot:hover {
+.youtube_mod_dot.active,
+.youtube_mod_dot:hover {
     background: #dc3545;
     border-color: #dc3545;
     transform: scale(1.3);
 }
 
-#<?php echo $uid; ?> .ytc-dot:focus-visible {
+.youtube_mod_dot:focus-visible {
     outline: 2px solid #dc3545;
     outline-offset: 3px;
 }
 
-#<?php echo $uid; ?> .ytc-progress {
+/* Autoplay progress bar */
+.youtube_mod_progress {
     height: 3px;
     background: #dee2e6;
     border-radius: 2px;
     overflow: hidden;
 }
 
-#<?php echo $uid; ?> .ytc-bar {
+.youtube_mod_bar {
     height: 100%;
     background: #dc3545;
     border-radius: 2px;
     width: 0;
 }
 
-#<?php echo $uid; ?>-lightbox {
-    background: rgba(0,0,0,.88);
-    border-radius: var(--bs-border-radius-lg, .5rem);
-    padding: 2.5rem 1rem 1rem;
-    margin-top: 1rem;
-    position: relative;
-}
-
-#<?php echo $uid; ?>-lightbox .ytc-lightbox-close {
-    position: absolute;
-    top: .6rem;
-    right: .75rem;
-}
-
-#<?php echo $uid; ?>-lightbox .ytc-player iframe {
-    border: none;
-    border-radius: var(--bs-border-radius, .375rem);
-}
-
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-    #<?php echo $uid; ?> .ytc-thumb-wrap img,
-    #<?php echo $uid; ?> .ytc-play-btn svg,
-    #<?php echo $uid; ?> .ytc-dot,
-    #<?php echo $uid; ?> .ytc-bar { transition: none !important; }
+    .youtube_mod_thumb,
+    .youtube_mod_play_btn svg,
+    .youtube_mod_dot,
+    .youtube_mod_bar { transition: none !important; }
 }
 </style>
 
@@ -313,49 +298,65 @@ $uid = 'mod-ccpbiosim-yt-' . $module->id;
 (function () {
     'use strict';
 
-    const uid      = '<?php echo $uid; ?>';
-    const carousel = document.getElementById(uid);
+    var uid      = '<?php echo $uid; ?>';
+    var carousel = document.getElementById(uid);
     if (!carousel) return;
 
-    const allSlides = Array.from(carousel.querySelectorAll('.ytc-slide'));
-    const allDots   = Array.from(document.getElementById(uid + '-dots').querySelectorAll('.ytc-dot'));
-    const prevBtn   = document.getElementById(uid + '-prev');
-    const nextBtn   = document.getElementById(uid + '-next');
-    const bar       = document.getElementById(uid + '-bar');
-    const lightbox  = document.getElementById(uid + '-lightbox');
-    const iframe    = document.getElementById(uid + '-iframe');
-    const closeBtn  = document.getElementById(uid + '-close');
+    var allSlides = Array.from(carousel.querySelectorAll('.youtube_mod_slide'));
+    var allDots   = Array.from(document.getElementById(uid + '-dots').querySelectorAll('.youtube_mod_dot'));
+    var prevBtn   = document.getElementById(uid + '-prev');
+    var nextBtn   = document.getElementById(uid + '-next');
+    var bar       = document.getElementById(uid + '-bar');
 
-    const total    = allSlides.length;
-    const doAuto   = carousel.dataset.autoplay === 'true';
-    const intMs    = parseInt(carousel.dataset.interval, 10) || 5000;
-    let   current  = 0;
-    let   autoTimer = null;
+    var total     = allSlides.length;
+    var doAuto    = carousel.dataset.autoplay === 'true';
+    var intMs     = parseInt(carousel.dataset.interval, 10) || 5000;
+    var current   = 0;
+    var autoTimer = null;
 
+    // ── Stop any playing video in a slide and restore its thumbnail ────────
+    function stopVideo(slide) {
+        var thumbWrap = slide.querySelector('.youtube_mod_thumb_wrap');
+        var player    = slide.querySelector('.youtube_mod_player');
+        var iframe    = slide.querySelector('.youtube_mod_player iframe');
+        if (!player || !thumbWrap || !iframe) return;
+        iframe.src              = '';
+        player.style.display    = 'none';
+        thumbWrap.style.display = '';
+    }
+
+    // ── Go to slide ────────────────────────────────────────────────────────
     function goTo(index) {
+        stopVideo(allSlides[current]);
+
         allSlides[current].classList.remove('active');
         allSlides[current].setAttribute('aria-hidden', 'true');
-        allDots[current] && allDots[current].classList.remove('active');
-        allDots[current] && allDots[current].setAttribute('aria-selected', 'false');
+        if (allDots[current]) {
+            allDots[current].classList.remove('active');
+            allDots[current].setAttribute('aria-selected', 'false');
+        }
 
         current = ((index % total) + total) % total;
 
         allSlides[current].classList.add('active');
         allSlides[current].setAttribute('aria-hidden', 'false');
-        allDots[current] && allDots[current].classList.add('active');
-        allDots[current] && allDots[current].setAttribute('aria-selected', 'true');
+        if (allDots[current]) {
+            allDots[current].classList.add('active');
+            allDots[current].setAttribute('aria-selected', 'true');
+        }
 
         prevBtn.disabled = false;
         nextBtn.disabled = false;
     }
 
+    // ── Autoplay ───────────────────────────────────────────────────────────
     function startAutoplay() {
         if (!doAuto) return;
         clearInterval(autoTimer);
         if (bar) {
             bar.style.transition = 'none';
             bar.style.width = '0%';
-            requestAnimationFrame(() => {
+            requestAnimationFrame(function () {
                 bar.style.transition = 'width ' + intMs + 'ms linear';
                 bar.style.width = '100%';
             });
@@ -365,6 +366,7 @@ $uid = 'mod-ccpbiosim-yt-' . $module->id;
 
     function resetAutoplay() { clearInterval(autoTimer); startAutoplay(); }
 
+    // ── Carousel controls ──────────────────────────────────────────────────
     prevBtn && prevBtn.addEventListener('click', function () { goTo(current - 1); resetAutoplay(); });
     nextBtn && nextBtn.addEventListener('click', function () { goTo(current + 1); resetAutoplay(); });
 
@@ -375,7 +377,7 @@ $uid = 'mod-ccpbiosim-yt-' . $module->id;
         });
     });
 
-    // Keyboard
+    // Keyboard arrow navigation
     carousel.addEventListener('keydown', function (e) {
         if (e.key === 'ArrowLeft')  { goTo(current - 1); resetAutoplay(); }
         if (e.key === 'ArrowRight') { goTo(current + 1); resetAutoplay(); }
@@ -391,34 +393,36 @@ $uid = 'mod-ccpbiosim-yt-' . $module->id;
         if (Math.abs(dx) > 40) { goTo(dx < 0 ? current + 1 : current - 1); resetAutoplay(); }
     }, { passive: true });
 
-    // Pause on hover / focus
+    // Pause autoplay while hovering or focused
     carousel.addEventListener('mouseenter', function () { clearInterval(autoTimer); });
     carousel.addEventListener('mouseleave', startAutoplay);
     carousel.addEventListener('focusin',    function () { clearInterval(autoTimer); });
     carousel.addEventListener('focusout',   startAutoplay);
 
+    // ── In-place video player ──────────────────────────────────────────────
+    // Clicking the play button hides the thumbnail and loads the iframe
+    // directly inside the same card in its place. Navigating to another
+    // slide (prev/next/dot) automatically stops the video and restores
+    // the thumbnail via stopVideo() called inside goTo().
     carousel.addEventListener('click', function (e) {
-        var btn = e.target.closest('.ytc-play-btn');
-        if (!btn || !lightbox || !iframe) return;
-        iframe.src   = btn.dataset.embed + '?autoplay=1&rel=0';
-        iframe.title = btn.dataset.title || '';
-        lightbox.style.display = 'block';
+        var btn = e.target.closest('.youtube_mod_play_btn');
+        if (!btn) return;
+
+        var slide     = btn.closest('.youtube_mod_slide');
+        var thumbWrap = slide.querySelector('.youtube_mod_thumb_wrap');
+        var player    = slide.querySelector('.youtube_mod_player');
+        var iframe    = slide.querySelector('.youtube_mod_player iframe');
+        if (!slide || !thumbWrap || !player || !iframe) return;
+
         clearInterval(autoTimer);
-        if (closeBtn) closeBtn.focus();
+
+        iframe.src              = btn.dataset.embed + '?autoplay=1&rel=0';
+        iframe.title            = btn.dataset.title || '';
+        thumbWrap.style.display = 'none';
+        player.style.display    = '';
     });
 
-    function closeLightbox() {
-        if (!lightbox || !iframe) return;
-        iframe.src = '';
-        lightbox.style.display = 'none';
-        startAutoplay();
-    }
-
-    closeBtn  && closeBtn.addEventListener('click', closeLightbox);
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && lightbox && lightbox.style.display !== 'none') closeLightbox();
-    });
-
+    // ── Init ──────────────────────────────────────────────────────────────
     goTo(0);
     startAutoplay();
 
