@@ -10,6 +10,10 @@
   transform: translateY(0);
 }
 
+.section-padding {
+  padding: 4rem 0;
+}
+
 /* -------------------------------------- Management Team ------------------------------------------- */
 .management-team-card-hover {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -501,12 +505,6 @@
   position: relative;
   z-index: 2;
 }
-
-/*
-.section-padding {
-  padding: 4rem 0;
-}
-*/
 
 /* ---------------------------------------------- Youtube ---------------------------------------- */
 .youtube_mod_slide        { display: none; }
