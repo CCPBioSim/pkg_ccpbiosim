@@ -466,3 +466,166 @@
   max-height:120px;
   margin-bottom:15px;
 }
+
+/* ---------------------------------------------- Modules ---------------------------------------- */
+/* ---------------------------------------------- Hero    ---------------------------------------- */
+/* HERO VIDEO */
+.hero {
+  position: relative;
+  min-height: 90vh;
+  color: white;
+  overflow: hidden;
+}
+
+.hero video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(15, 30, 60, 0.75),
+    rgba(15, 30, 60, 0.85)
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/*
+.section-padding {
+  padding: 4rem 0;
+}
+*/
+
+/* ---------------------------------------------- Youtube ---------------------------------------- */
+.youtube_mod_slide        { display: none; }
+.youtube_mod_slide.active { display: block; }
+
+/* Thumbnail wrapper — 16:9 aspect ratio, clips zoom-on-hover */
+.youtube_mod_thumb_wrap {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #000;
+    border-radius: var(--bs-card-inner-border-radius, .375rem) var(--bs-card-inner-border-radius, .375rem) 0 0;
+}
+
+.youtube_mod_thumb {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform .4s ease, opacity .4s ease;
+}
+
+.youtube_mod_slide .card:hover .youtube_mod_thumb {
+    transform: scale(1.04);
+    opacity: .88;
+}
+
+/* Play button overlay */
+.youtube_mod_play_btn {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: transparent; border: none; cursor: pointer; padding: 0;
+}
+
+.youtube_mod_play_btn svg {
+    width: 68px; height: 48px;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,.5));
+    transition: transform .2s ease, filter .2s ease;
+}
+
+.youtube_mod_play_btn:hover svg,
+.youtube_mod_play_btn:focus-visible svg {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,.7));
+}
+
+.youtube_mod_play_bg    { fill: rgba(20,20,20,.78); transition: fill .2s; }
+.youtube_mod_play_btn:hover .youtube_mod_play_bg { fill: #dc3545; }
+.youtube_mod_play_arrow { fill: #fff; }
+
+/* Inline player — Bootstrap ratio handles 16:9 sizing */
+.youtube_mod_player {
+    border-radius: var(--bs-card-inner-border-radius, .375rem) var(--bs-card-inner-border-radius, .375rem) 0 0;
+    overflow: hidden;
+}
+
+.youtube_mod_player iframe {
+    border: none;
+}
+
+/* Title: clamp to 2 lines */
+.youtube_mod_title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.youtube_mod_title a           { color: inherit; text-decoration: none; }
+.youtube_mod_title a:hover,
+.youtube_mod_title a:focus     { color: #dc3545; text-decoration: underline; }
+
+/* Description: clamp to 3 lines */
+.youtube_mod_desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Dot indicators */
+.youtube_mod_dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    border: 2px solid #adb5bd; background: transparent;
+    padding: 0; cursor: pointer;
+    transition: background .2s, border-color .2s, transform .2s;
+}
+
+.youtube_mod_dot.active,
+.youtube_mod_dot:hover {
+    background: #dc3545;
+    border-color: #dc3545;
+    transform: scale(1.3);
+}
+
+.youtube_mod_dot:focus-visible {
+    outline: 2px solid #dc3545;
+    outline-offset: 3px;
+}
+
+/* Autoplay progress bar */
+.youtube_mod_progress {
+    height: 3px;
+    background: #dee2e6;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.youtube_mod_bar {
+    height: 100%;
+    background: #dc3545;
+    border-radius: 2px;
+    width: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .youtube_mod_thumb,
+    .youtube_mod_play_btn svg,
+    .youtube_mod_dot,
+    .youtube_mod_bar { transition: none !important; }
+}
+
+
