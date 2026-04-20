@@ -1,78 +1,9 @@
 <?php
 defined('_JEXEC') or die;
 
+$wa = $this->document->getWebAssetManager();
+$wa->useStyle('com_ccpbiosim.site');
 ?>
-
-  <style>
-    :root {
-      --primary: #1f3a5f;
-      --accent: #2bb0e6;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    /* HERO VIDEO */
-    .hero {
-      position: relative;
-      min-height: 90vh;
-      color: white;
-      overflow: hidden;
-    }
-
-    .hero video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        rgba(15, 30, 60, 0.75),
-        rgba(15, 30, 60, 0.85)
-      );
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .btn-primary {
-      background-color: var(--accent);
-      border: none;
-    }
-
-    .btn-primary:hover {
-      background-color: #1998c8;
-    }
-
-    .section-padding {
-      padding: 4rem 0;
-    }
-
-    .bg-light-alt {
-      background-color: #f5f7fa;
-    }
-
-    footer {
-      background-color: #0f172a;
-      color: #cbd5f5;
-    }
-
-    footer a {
-      color: #93c5fd;
-      text-decoration: none;
-    }
-  </style>
 
 <header class="hero d-flex align-items-center">
   <!-- Replace src with real simulation movie -->
