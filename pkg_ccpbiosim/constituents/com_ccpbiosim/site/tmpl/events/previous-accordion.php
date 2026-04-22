@@ -62,7 +62,7 @@ asort($categories);
             <?php foreach ($this->items as $j => $item) : ?>
               <?php if ($item->category == $cat && Factory::getDate($item->enddatetime) < Factory::getDate()): ?>
                 <div class="row events-row border rounded p-3 mb-3 bg-light" onclick="window.location.href='<?php echo Route::_('index.php?option=com_ccpbiosim&view=event&id='.(int) $item->id); ?>'">
-                  <div class="col-md-1 events-date text-center bg-success text-white">
+                  <div class="col-md-1 events-date text-center btn-success text-white">
                     <div class="month"><?php echo Factory::getDate($item->startdatetime)->format("M"); ?></div>
                     <div class="day">
                       <?php if (Factory::getDate($item->startdatetime)->__get("day") == Factory::getDate($item->enddatetime)->__get("day")): ?>
@@ -96,10 +96,10 @@ asort($categories);
 		    <?php endif; ?>
 		    <?php $canCheckin = Factory::getApplication()->getIdentity()->authorise('core.manage', 'com_ccpbiosim.' . $item->id) || $item->checked_out == Factory::getApplication()->getIdentity()->id; ?>
 		    <?php if($canEdit && $item->checked_out == 0): ?>
-	              <a href="<?php echo Route::_('index.php?option=com_ccpbiosim&task=event.edit&id=' . $item->id, false, 2); ?>" class="btn btn-mini bg-primary text-white" type="button"><i class="icon-edit" ></i></a>
+	              <a href="<?php echo Route::_('index.php?option=com_ccpbiosim&task=event.edit&id=' . $item->id, false, 2); ?>" class="btn btn-mini btn-primary text-white" type="button"><i class="icon-edit" ></i></a>
                     <?php endif; ?>
 		    <?php if ($canDelete): ?>
-		      <a href="<?php echo Route::_('index.php?option=com_ccpbiosim&task=eventform.remove&id=' . $item->id, false, 2); ?>" class="btn btn-mini bg-danger text-white delete-button" type="button"><i class="icon-trash" ></i></a>
+		      <a href="<?php echo Route::_('index.php?option=com_ccpbiosim&task=eventform.remove&id=' . $item->id, false, 2); ?>" class="btn btn-mini btn-danger text-white delete-button" type="button"><i class="icon-trash" ></i></a>
                     <?php endif; ?>
                   </div>
                 </div>
