@@ -25,8 +25,6 @@ $lang->load('com_ccpbiosim', JPATH_SITE);
 
 $user    = Factory::getApplication()->getIdentity();
 $canEdit = CcpbiosimHelper::canUserEdit($this->item, $user);
-
-
 ?>
 
 <div class="event-edit front-end-edit">
@@ -41,8 +39,8 @@ $canEdit = CcpbiosimHelper::canUserEdit($this->item, $user);
 		<?php throw new \Exception(Text::_('COM_CCPBIOSIM_ERROR_MESSAGE_NOT_AUTHORISED'), 403); ?>
 		</h3>
 	<?php else : ?>
-		<?php if (!empty($this->item->id)): ?>
-			<h1><?php echo Text::sprintf('COM_CCPBIOSIM_EDIT_ITEM_TITLE', $this->item->id); ?></h1>
+		<?php if (!empty($this->item->title)): ?>
+			<h1><?php echo Text::_('COM_CCPBIOSIM_EDIT_ITEM_TITLE') . ' - ' . $this->escape($this->item->title); ?></h1>
 		<?php else: ?>
 			<h1><?php echo Text::_('COM_CCPBIOSIM_ADD_ITEM_TITLE'); ?></h1>
 		<?php endif; ?>
@@ -50,15 +48,14 @@ $canEdit = CcpbiosimHelper::canUserEdit($this->item, $user);
 		<form id="form-event"
 			  action="<?php echo Route::_('index.php?option=com_ccpbiosim&task=eventform.save'); ?>"
 			  method="post" class="form-validate form-horizontal" enctype="multipart/form-data">
-			
-	<input type="hidden" name="jform[id]" value="<?php echo isset($this->item->id) ? $this->item->id : ''; ?>" />
 
+	<input type="hidden" name="jform[id]" value="<?php echo isset($this->item->id) ? $this->item->id : ''; ?>" />
 	<input type="hidden" name="jform[state]" value="<?php echo isset($this->item->state) ? $this->item->state : ''; ?>" />
 
 				<?php echo $this->form->getInput('created_by'); ?>
 				<?php echo $this->form->getInput('modified_by'); ?>
-	<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'event')); ?>
-	<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'event', Text::_('COM_CCPBIOSIM_TAB_EVENT', true)); ?>
+        <h3><?php echo Text::_('Pre-Event Information'); ?></h3>
+        <p><?php echo Text::_('Enter event information that will form the basis of the event advert and information, intended for use before and during the event.'); ?></p>
 
         <?php echo $this->form->renderField('title'); ?>
         <?php echo $this->form->renderField('shorturl'); ?>
@@ -68,11 +65,13 @@ $canEdit = CcpbiosimHelper::canUserEdit($this->item, $user);
         <?php echo $this->form->renderField('enddatetime'); ?>
         <?php echo $this->form->renderField('shortdesc'); ?>
         <?php echo $this->form->renderField('eventdetails'); ?>
+
+        <h3><?php echo Text::_('Post-Event Information'); ?></h3>
+        <p><?php echo Text::_('Add this information once the event has run for internal statistics keeping and for displaying feedback/media.'); ?></p>
+
         <?php echo $this->form->renderField('youtube'); ?>
         <?php echo $this->form->renderField('postevent'); ?>
-	<?php echo $this->form->renderField('attendance'); ?>
-
-	<?php echo HTMLHelper::_('uitab.endTab'); ?>
+        <?php echo $this->form->renderField('attendance'); ?>
 			<div class="control-group">
 				<div class="controls">
 
