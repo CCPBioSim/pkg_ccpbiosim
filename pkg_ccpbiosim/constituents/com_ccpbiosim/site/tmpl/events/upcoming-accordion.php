@@ -37,18 +37,21 @@ $wa->useStyle('com_ccpbiosim.site')
 $categories = array_unique(array_column($this->items, 'category'));
 asort($categories);
 ?>
-<?php if ($this->params->get('show_page_heading')) : ?>
-    <div class="page-header">
-        <h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
-    </div>
-<?php endif;?>
+<div class="d-flex align-items-center justify-content-between mb-2">
+    <?php if ($this->params->get('show_page_heading')) : ?>
+        <h1 class="mb-0"><?php echo $this->escape($this->params->get('page_heading')); ?></h1>
+    <?php else : ?>
+        <span></span>
+    <?php endif; ?>
+    <?php if ($canCreate) : ?>
+        <a href="<?php echo Route::_('index.php?option=com_ccpbiosim&task=eventform.edit&id=0', false, 0); ?>"
+           class="btn btn-success btn-sm ms-3">
+            <i class="icon-plus"></i>
+            <?php echo Text::_('COM_CCPBIOSIM_ADD_ITEM'); ?>
+        </a>
+    <?php endif; ?>
+</div>
 <p>Below are upcoming events relevant to our community.</p>
-<?php if ($canCreate) : ?>
-  <a href="<?php echo Route::_('index.php?option=com_ccpbiosim&task=eventform.edit&id=0', false, 0); ?>"
-     class="btn btn-success btn-small"><i
-     class="icon-plus"></i>
-     <?php echo Text::_('COM_CCPBIOSIM_ADD_ITEM'); ?></a>
-<?php endif; ?>
 <div class="container my-5">
   <div class="accordion" id="eventAccordion">
     <?php foreach ($categories as $i => $cat) : ?>
