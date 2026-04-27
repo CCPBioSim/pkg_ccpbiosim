@@ -62,7 +62,7 @@ $cat_colours = array("Conferences"=>"primary", "Training Workshops"=>"success", 
           <div class="accordion-body">
             <?php foreach ($this->items as $j => $item) : ?>
                 <div class="row events-row border rounded p-3 mb-3 bg-light" onclick="window.location.href='<?php echo Route::_('index.php?option=com_ccpbiosim&view=event&id='.(int) $item->id); ?>'">
-                  <div class="col-md-1 events-date text-center bg-success text-white">
+                  <div class="col-md-1 events-date text-center bg-<? echo $cat_colours[$cat]; ?> text-white">
                     <div class="month"><?php echo Factory::getDate($item->startdatetime)->format("M"); ?></div>
                     <div class="day">
                       <?php if (Factory::getDate($item->startdatetime)->__get("day") == Factory::getDate($item->enddatetime)->__get("day")): ?>

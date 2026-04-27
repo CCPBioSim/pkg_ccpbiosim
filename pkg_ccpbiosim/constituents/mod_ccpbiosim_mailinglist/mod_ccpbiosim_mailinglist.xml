@@ -3,7 +3,7 @@
   <name>CCPBioSim Mailing List Module</name>
   <version>0.9.3</version>
   <author>James Gebbie-Rayet</author>
-  <creationDate>2025/02/27</creationDate>
+  <creationDate>2026/02/27</creationDate>
   <description>Module for showing community mailing list</description>
   <namespace path="src">Ccpbiosim\Module\Mailinglist</namespace>
   <files>
