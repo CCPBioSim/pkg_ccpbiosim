@@ -3,7 +3,7 @@
   <name>MOD_CCPBIOSIM_EVENTS</name>
   <version>0.9.5</version>
   <author>James Gebbie-Rayet</author>
-  <creationDate>2026/02/27</creationDate>
+  <creationDate>2026/04/27</creationDate>
   <description>MOD_CCPBIOSIM_EVENTS_DESC</description>
   <namespace path="src">CCPBioSim\Module\Events</namespace>
   <files>
