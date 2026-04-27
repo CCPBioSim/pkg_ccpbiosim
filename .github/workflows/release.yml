@@ -27,6 +27,7 @@ jobs:
           xmlstarlet ed --inplace -u "/extension/version" -v ${{ github.event.inputs.version }} pkg_ccpbiosim/pkg_ccpbiosim.xml
           xmlstarlet ed --inplace -u "/extension/version" -v ${{ github.event.inputs.version }} pkg_ccpbiosim/constituents/com_ccpbiosim/ccpbiosim.xml
           xmlstarlet ed --inplace -u "/extension/version" -v ${{ github.event.inputs.version }} pkg_ccpbiosim/constituents/mod_ccpbiosim_activities/mod_ccpbiosim_activities.xml
+          xmlstarlet ed --inplace -u "/extension/version" -v ${{ github.event.inputs.version }} pkg_ccpbiosim/constituents/mod_ccpbiosim_events/mod_ccpbiosim_events.xml
           xmlstarlet ed --inplace -u "/extension/version" -v ${{ github.event.inputs.version }} pkg_ccpbiosim/constituents/mod_ccpbiosim_hero/mod_ccpbiosim_hero.xml
           xmlstarlet ed --inplace -u "/extension/version" -v ${{ github.event.inputs.version }} pkg_ccpbiosim/constituents/mod_ccpbiosim_mailinglist/mod_ccpbiosim_mailinglist.xml
           xmlstarlet ed --inplace -u "/extension/version" -v ${{ github.event.inputs.version }} pkg_ccpbiosim/constituents/mod_ccpbiosim_youtube/mod_ccpbiosim_youtube.xml
@@ -49,6 +50,7 @@ jobs:
             - Update pkg_ccpbiosim/pkg_ccpbiosim.xml
             - Update com_ccpbiosim/ccpbiosim.xml
             - Update mod_ccpbiosim_activities/mod_ccpbiosim_activities.xml
+            - Update mod_ccpbiosim_events/mod_ccpbiosim_events.xml
             - Update mod_ccpbiosim_hero/mod_ccpbiosim_hero.xml
             - Update mod_ccpbiosim_mailinglist/mod_ccpbiosim_mailinglist.xml
             - Update mod_ccpbiosim_youtube/mod_ccpbiosim_youtube.xml
