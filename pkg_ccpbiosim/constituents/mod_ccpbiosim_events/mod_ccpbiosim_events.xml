@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" method="upgrade">
   <name>MOD_CCPBIOSIM_EVENTS</name>
-  <version>0.9.3</version>
+  <version>0.9.4</version>
   <author>James Gebbie-Rayet</author>
   <creationDate>2026/02/27</creationDate>
   <description>MOD_CCPBIOSIM_EVENTS_DESC</description>
@@ -19,37 +19,14 @@
   <config>
     <fields name="params">
       <fieldset name="basic">
-         <field
-           name="count"
-           type="number"
-           label="MOD_CCPBIOSIM_EVENTS_PARAM_COUNT_LABEL"
-           description="MOD_CCPBIOSIM_EVENTS_PARAM_COUNT_DESC"
-           default="5"
-           min="1"
-           max="20"
-           filter="integer"
-           />
-         <field
-           name="show_location"
-           type="radio"
-           label="MOD_CCPBIOSIM_EVENTS_PARAM_SHOW_LOCATION_LABEL"
-           description="MOD_CCPBIOSIM_EVENTS_PARAM_SHOW_LOCATION_DESC"
-           default="1"
-           class="btn-group btn-group-yesno"
-           >
-             <option value="1">JYES</option>
-             <option value="0">JNO</option>
-         </field>
-         <field
-           name="show_past"
-           type="radio"
-           label="MOD_CCPBIOSIM_EVENTS_PARAM_SHOW_PAST_LABEL"
-           description="MOD_CCPBIOSIM_EVENTS_PARAM_SHOW_PAST_DESC"
-           default="0"
-           class="btn-group btn-group-yesno"
-           >
-             <option value="1">JYES</option>
-             <option value="0">JNO</option>
+        <field name="count" type="number" label="MOD_CCPBIOSIM_EVENTS_PARAM_COUNT_LABEL" description="MOD_CCPBIOSIM_EVENTS_PARAM_COUNT_DESC" default="5" min="1" max="20" filter="integer"/>
+        <field name="show_location" type="radio" label="MOD_CCPBIOSIM_EVENTS_PARAM_SHOW_LOCATION_LABEL" description="MOD_CCPBIOSIM_EVENTS_PARAM_SHOW_LOCATION_DESC" default="1" class="btn-group btn-group-yesno">
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+        <field name="show_past" type="radio" label="MOD_CCPBIOSIM_EVENTS_PARAM_SHOW_PAST_LABEL" description="MOD_CCPBIOSIM_EVENTS_PARAM_SHOW_PAST_DESC" default="0" class="btn-group btn-group-yesno">
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
         </field>
       </fieldset>
     </fields>
