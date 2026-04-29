@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package    com_ccpbiosim
  * @copyright  2025 CCPBioSim Team
@@ -15,36 +14,72 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 
 /**
- * Statistics HTML View
- *
- * Passes model data to the tmpl/statistics/default.php layout.
+ * Statistics view.
  */
 class HtmlView extends BaseHtmlView
 {
-    /**
-     * Full statistics payload from the model.
-     *
-     * @var array
-     */
-    protected array $statisticsData = [];
+    protected $statisticsData = [];
+    protected $params;
 
-    /**
-     * Prepares the view, fetches model data, and renders the layout.
-     *
-     * @param  string  $tpl  Optional template suffix.
-     * @return void
-     */
-    public function display($tpl = null): void
+    public function display($tpl = null)
     {
-        /** @var \CCPBioSim\Component\Ccpbiosim\Site\Model\Statistics\StatisticsModel $model */
-        $model = $this->getModel();
+        $app  = Factory::getApplication();
+        $menu = $app->getMenu()->getActive();
 
-        $this->statisticsData = $model->getStatisticsData();
+        $menuParams = new \Joomla\Registry\Registry();
+        if ($menu) {
+            $menuParams = $menu->getParams();
+        }
 
-        // Set the page title
-        $app = Factory::getApplication();
-        $app->getDocument()->setTitle(Text::_('COM_CCPBIOSIM_STATISTICS_TITLE'));
+        $componentParams = $app->getParams('com_ccpbiosim');
+        $menuParams->merge($componentParams);
+        $this->params = $menuParams;
 
+        // Use Joomla's magic get() — resolves to StatisticsModel::getStatisticsData()
+        $this->statisticsData = $this->get('StatisticsData');
+
+        if (count($errors = $this->get('Errors'))) {
+            throw new \Exception(implode("\n", $errors));
+        }
+
+        $this->_prepareDocument();
         parent::display($tpl);
+    }
+
+    protected function _prepareDocument()
+    {
+        $app   = Factory::getApplication();
+        $menus = $app->getMenu();
+        $menu  = $menus->getActive();
+
+        if ($menu) {
+            $this->params->def('page_heading', $this->params->get('page_title', $menu->title));
+        } else {
+            $this->params->def('page_heading', Text::_('COM_CCPBIOSIM_STATISTICS_TITLE'));
+        }
+
+        $title = $this->params->get('page_title', '');
+
+        if (empty($title)) {
+            $title = $app->get('sitename');
+        } elseif ($app->get('sitename_pagetitles', 0) == 1) {
+            $title = Text::sprintf('JPAGETITLE', $app->get('sitename'), $title);
+        } elseif ($app->get('sitename_pagetitles', 0) == 2) {
+            $title = Text::sprintf('JPAGETITLE', $title, $app->get('sitename'));
+        }
+
+        $this->document->setTitle($title);
+
+        if ($this->params->get('menu-meta_description')) {
+            $this->document->setDescription($this->params->get('menu-meta_description'));
+        }
+
+        if ($this->params->get('menu-meta_keywords')) {
+            $this->document->setMetadata('keywords', $this->params->get('menu-meta_keywords'));
+        }
+
+        if ($this->params->get('robots')) {
+            $this->document->setMetadata('robots', $this->params->get('robots'));
+        }
     }
 }
