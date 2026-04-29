@@ -80,6 +80,8 @@ class Router extends RouterView
 		$this->registerView($managementteamform);
 		$ourcommunity = new RouterViewConfiguration('ourcommunity');
 		$this->registerView($ourcommunity);
+                $statistics = new RouterViewConfiguration('statistics');
+		$this->registerView($statistics);
                 $software = new RouterViewConfiguration('software');
 		$this->registerView($software);
 		$workshop = new RouterViewConfiguration('workshop');
