@@ -25,7 +25,9 @@ $categories = $events['categories'];
 $byYear     = $events['byYear'];
 $byCategory = $events['byCategory'];
 
-$catColours   = ['#0d6efd', '#198754', '#fd7e14', '#6610f2', '#dc3545', '#0dcaf0'];
+// Colours matched to Bootstrap classes used across the site:
+// Conferences = bg-primary, Training Workshops = bg-success, Webinars = bg-danger
+$catColours   = ['#0d6efd', '#198754', '#dc3545', '#6610f2', '#fd7e14', '#0dcaf0'];
 $catColourMap = [];
 $ci = 0;
 foreach ($categories as $catId => $catName) {
@@ -84,6 +86,8 @@ function fmt_date(?string $iso): string {
 ?>
 
 <?php
+// Load Plotly WITHOUT defer so it is available when the inline script runs.
+// Using addScript with no attributes ensures synchronous loading.
 $this->document->addScript('https://cdn.plot.ly/plotly-2.32.0.min.js', ['version' => false]);
 ?>
 
@@ -397,6 +401,14 @@ $this->document->addScript('https://cdn.plot.ly/plotly-2.32.0.min.js', ['version
             }], { ...baseLayout, showlegend: false }, config);
         }
 
+        // Bar charts need extra bottom margin and a lower legend y so the
+        // legend doesn't overlap the "Year" x-axis title.
+        const barLayout = {
+            ...baseLayout,
+            margin: { t: 20, r: 20, b: 80, l: 50 },
+            legend: { orientation: 'h', y: -0.35 },
+        };
+
         // Chart 3: Events per year (grouped bar)
         const elEventsYear = document.getElementById('chart-events-year');
         if (elEventsYear && years.length) {
@@ -405,7 +417,7 @@ $this->document->addScript('https://cdn.plot.ly/plotly-2.32.0.min.js', ['version
                     name: s.name, x: years, y: s.data,
                     type: 'bar', marker: { color: s.colour },
                 })),
-                { ...baseLayout, barmode: 'group',
+                { ...barLayout, barmode: 'group',
                   xaxis: { title: 'Year', tickformat: 'd' },
                   yaxis: { title: 'Events', dtick: 1 } },
                 config
@@ -420,7 +432,7 @@ $this->document->addScript('https://cdn.plot.ly/plotly-2.32.0.min.js', ['version
                     name: s.name, x: years, y: s.data,
                     type: 'bar', marker: { color: s.colour },
                 })),
-                { ...baseLayout, barmode: 'group',
+                { ...barLayout, barmode: 'group',
                   xaxis: { title: 'Year', tickformat: 'd' },
                   yaxis: { title: 'Attendees' } },
                 config
