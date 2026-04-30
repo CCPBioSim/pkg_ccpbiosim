@@ -206,7 +206,7 @@ $this->document->addScript('https://cdn.plot.ly/plotly-2.32.0.min.js', ['version
 
         <h2 class="h4 fw-semibold mb-4">
             <span class="badge bg-warning text-dark me-2">Training</span>
-            Training Course Containers
+            Actively Maintained Online Training Courses
         </h2>
 
         <div class="row g-3 mb-4">
@@ -216,7 +216,7 @@ $this->document->addScript('https://cdn.plot.ly/plotly-2.32.0.min.js', ['version
                         <div class="display-6 fw-bold text-warning">
                             <?php echo (int) $containers['total']; ?>
                         </div>
-                        <div class="text-muted small mt-1">Total Containers</div>
+                        <div class="text-muted small mt-1">Total Courses</div>
                     </div>
                 </div>
             </div>
@@ -235,7 +235,7 @@ $this->document->addScript('https://cdn.plot.ly/plotly-2.32.0.min.js', ['version
         <div class="row g-3">
             <div class="col-md-5">
                 <div class="card border-0 shadow-sm h-100">
-                    <div class="card-header bg-white fw-semibold">Containers by Category</div>
+                    <div class="card-header bg-white fw-semibold">Courses by Category</div>
                     <div class="card-body">
                         <div id="chart-containers-bar" style="height:280px;"></div>
                     </div>
