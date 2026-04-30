@@ -23,3 +23,4 @@ class StatisticsController extends BaseController
      */
     protected $default_view = 'statistics';
 }
+?>
