@@ -25,56 +25,60 @@ $categories = $events['categories'];
 $byYear     = $events['byYear'];
 $byCategory = $events['byCategory'];
 
-// Colours matched to Bootstrap classes used across the site:
-// Conferences = bg-primary, Training Workshops = bg-success, Webinars = bg-danger
-$catColours   = ['#0d6efd', '#198754', '#dc3545', '#6610f2', '#fd7e14', '#0dcaf0'];
-$catColourMap = [];
-$ci = 0;
-foreach ($categories as $catId => $catName) {
-    $catColourMap[$catId] = $catColours[$ci % count($catColours)];
-    $ci++;
-}
-
-$jsYears      = json_encode(array_values($years));
-$jsCatNames   = json_encode(array_values($categories));
-$jsCatColours = json_encode(array_values($catColourMap));
+// Map category names to Bootstrap bg-* CSS classes.
+// Colours are resolved at runtime in JS from the live computed CSS,
+// so site theme overrides are respected automatically.
+$catCssClasses = [
+    'Conferences'        => 'bg-primary',
+    'Training Workshops' => 'bg-success',
+    'Webinars'           => 'bg-danger',
+];
+$catFallbackClasses = ['bg-warning', 'bg-info', 'bg-secondary'];
 
 $eventsPerYearSeries     = [];
 $attendancePerYearSeries = [];
+$fi = 0;
 foreach ($categories as $catId => $catName) {
+    $cssClass = $catCssClasses[$catName]
+        ?? $catFallbackClasses[$fi++ % count($catFallbackClasses)];
+
     $countSeries = [];
     $attSeries   = [];
     foreach ($years as $year) {
         $countSeries[] = $byYear[$year][$catId]['count']      ?? 0;
         $attSeries[]   = $byYear[$year][$catId]['attendance'] ?? 0;
     }
-    $eventsPerYearSeries[]     = ['name' => $catName, 'data' => $countSeries, 'colour' => $catColourMap[$catId]];
-    $attendancePerYearSeries[] = ['name' => $catName, 'data' => $attSeries,   'colour' => $catColourMap[$catId]];
+    $eventsPerYearSeries[]     = ['name' => $catName, 'data' => $countSeries, 'cssClass' => $cssClass];
+    $attendancePerYearSeries[] = ['name' => $catName, 'data' => $attSeries,   'cssClass' => $cssClass];
 }
+
+$jsYears    = json_encode(array_values($years));
+$jsCatNames = json_encode(array_values($categories));
 
 $jsEventsPerYear = json_encode($eventsPerYearSeries);
 $jsAttPerYear    = json_encode($attendancePerYearSeries);
 
-$pieCatLabels = [];
-$pieCatValues = [];
-$pieCatColrs  = [];
+// Pie chart data — CSS class included so JS can resolve the live colour
+$pieCatLabels    = [];
+$pieCatValues    = [];
+$pieCatClasses   = [];
+$pieAttLabels    = [];
+$pieAttValues    = [];
+$fi2 = 0;
 foreach ($byCategory as $catId => $cat) {
-    $pieCatLabels[] = $cat['name'];
-    $pieCatValues[] = $cat['count'];
-    $pieCatColrs[]  = $catColourMap[$catId];
+    $cssClass          = $catCssClasses[$cat['name']]
+        ?? $catFallbackClasses[$fi2++ % count($catFallbackClasses)];
+    $pieCatLabels[]    = $cat['name'];
+    $pieCatValues[]    = $cat['count'];
+    $pieCatClasses[]   = $cssClass;
+    $pieAttLabels[]    = $cat['name'];
+    $pieAttValues[]    = round($cat['attendance']);
 }
-$jsPieCatLabels = json_encode($pieCatLabels);
-$jsPieCatValues = json_encode($pieCatValues);
-$jsPieCatColrs  = json_encode($pieCatColrs);
-
-$pieAttLabels = [];
-$pieAttValues = [];
-foreach ($byCategory as $catId => $cat) {
-    $pieAttLabels[] = $cat['name'];
-    $pieAttValues[] = round($cat['attendance']);
-}
-$jsPieAttLabels = json_encode($pieAttLabels);
-$jsPieAttValues = json_encode($pieAttValues);
+$jsPieCatLabels  = json_encode($pieCatLabels);
+$jsPieCatValues  = json_encode($pieCatValues);
+$jsPieCatClasses = json_encode($pieCatClasses);
+$jsPieAttLabels  = json_encode($pieAttLabels);
+$jsPieAttValues  = json_encode($pieAttValues);
 
 $conCatLabels = json_encode(array_keys($containers['byCategory']));
 $conCatValues = json_encode(array_values($containers['byCategory']));
@@ -86,7 +90,7 @@ function fmt_date(?string $iso): string {
 ?>
 
 <?php
-// Load Plotly WITHOUT defer so it is available when the inline script runs.
+// FIX: Load Plotly WITHOUT defer so it is available when the inline script runs.
 // Using addScript with no attributes ensures synchronous loading.
 $this->document->addScript('https://cdn.plot.ly/plotly-2.32.0.min.js', ['version' => false]);
 ?>
@@ -130,11 +134,15 @@ $this->document->addScript('https://cdn.plot.ly/plotly-2.32.0.min.js', ['version
                     </div>
                 </div>
             </div>
-            <?php foreach ($byCategory as $catId => $cat) : ?>
+            <?php foreach ($byCategory as $catId => $cat) :
+                $kpiClass = $catCssClasses[$cat['name']] ?? 'bg-secondary';
+                // Convert bg-* to text-* for Bootstrap text colouring on white cards
+                $kpiTextClass = str_replace('bg-', 'text-', $kpiClass);
+            ?>
             <div class="col-6 col-md-3">
                 <div class="card h-100 border-0 shadow-sm text-center">
                     <div class="card-body">
-                        <div class="display-6 fw-bold" style="color:<?php echo htmlspecialchars($catColourMap[$catId]); ?>">
+                        <div class="display-6 fw-bold <?php echo $kpiTextClass; ?>">
                             <?php echo number_format($cat['count']); ?>
                         </div>
                         <div class="text-muted small mt-1"><?php echo htmlspecialchars($cat['name']); ?></div>
@@ -348,13 +356,29 @@ $this->document->addScript('https://cdn.plot.ly/plotly-2.32.0.min.js', ['version
 
 <!-- ======================================================================
      PLOTLY CHART INITIALISATION
-     Plotly is loaded synchronously above, so it is guaranteed to exist
+     FIX: Plotly is loaded synchronously above, so it is guaranteed to exist
      by the time this script runs. We still wrap in DOMContentLoaded to ensure
      the chart div elements are in the DOM.
 ====================================================================== -->
 <script>
 (function () {
     'use strict';
+
+    /**
+     * Resolve the background-color of a Bootstrap utility class by briefly
+     * injecting a hidden element, reading its computed style, then removing it.
+     * This means Plotly always uses whatever colour your site CSS defines for
+     * bg-primary / bg-success / bg-danger etc., even if they are overridden.
+     */
+    function cssClassToColour(cls) {
+        const el = document.createElement('div');
+        el.className = cls;
+        el.style.cssText = 'position:absolute;width:1px;height:1px;opacity:0;pointer-events:none';
+        document.body.appendChild(el);
+        const colour = getComputedStyle(el).backgroundColor;
+        document.body.removeChild(el);
+        return colour;
+    }
 
     function initCharts() {
         const baseLayout = {
@@ -368,16 +392,20 @@ $this->document->addScript('https://cdn.plot.ly/plotly-2.32.0.min.js', ['version
 
         const years             = <?php echo $jsYears; ?>;
         const catNames          = <?php echo $jsCatNames; ?>;
-        const catColours        = <?php echo $jsCatColours; ?>;
         const eventsPerYear     = <?php echo $jsEventsPerYear; ?>;
         const attendancePerYear = <?php echo $jsAttPerYear; ?>;
         const pieCatLabels      = <?php echo $jsPieCatLabels; ?>;
         const pieCatValues      = <?php echo $jsPieCatValues; ?>;
-        const pieCatColrs       = <?php echo $jsPieCatColrs; ?>;
+        const pieCatClasses     = <?php echo $jsPieCatClasses; ?>;
         const pieAttLabels      = <?php echo $jsPieAttLabels; ?>;
         const pieAttValues      = <?php echo $jsPieAttValues; ?>;
         const conCatLabels      = <?php echo $conCatLabels; ?>;
         const conCatValues      = <?php echo $conCatValues; ?>;
+
+        // Resolve all category colours from live CSS now, once
+        const pieCatColrs = pieCatClasses.map(cssClassToColour);
+        eventsPerYear.forEach(s     => { s.colour = cssClassToColour(s.cssClass); });
+        attendancePerYear.forEach(s => { s.colour = cssClassToColour(s.cssClass); });
 
         // Chart 1: Events by category (pie)
         const elEventsPie = document.getElementById('chart-events-pie');
