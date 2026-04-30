@@ -1,9 +1,11 @@
 <?php
 
 /**
- * @package    com_ccpbiosim
- * @copyright  2025 CCPBioSim Team
- * @license    MIT
+ * @package     CCPBioSim
+ * @subpackage  Statistics
+ *
+ * @copyright   Copyright (C) CCPBioSim. All rights reserved.
+ * @license     GNU General Public License version 2 or later
  */
 
 defined('_JEXEC') or die;
@@ -11,7 +13,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
-/** @var \Ccpbiosim\Component\Ccpbiosim\Site\View\Statistics\HtmlView $this */
+/** @var \CCPBioSim\Component\Ccpbiosim\Site\View\Statistics\HtmlView $this */
 
 $data       = $this->statisticsData;
 $events     = $data['events'];
@@ -97,13 +99,32 @@ function fmt_date(?string $iso): string {
     return date('j M Y', strtotime($iso));
 }
 ?>
+<!DOCTYPE html>
+<?php /* Joomla renders this file within its template wrapper; the DOCTYPE above
+         is here only as a comment anchor — Joomla's template provides it. */ ?>
+
+<?php // Load Plotly.js from CDN via Joomla's document ?>
 <?php $this->document->addScript('https://cdn.plot.ly/plotly-2.32.0.min.js', ['version' => false], ['defer' => true]); ?>
-<?php if ($this->params->get('show_page_heading')) : ?>
-    <div class="page-header">
-        <h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
-    </div>
-<?php endif; ?>
+
 <div class="ccpbiosim-statistics py-4">
+
+    <!-- ====================================================================
+         PAGE HEADER
+    ===================================================================== -->
+    <div class="container-fluid mb-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-5 fw-bold mb-1">
+                    <?php echo Text::_('COM_CCPBIOSIM_STATISTICS_TITLE'); ?>
+                </h1>
+                <p class="text-muted">
+                    <?php echo Text::_('COM_CCPBIOSIM_STATISTICS_SUBTITLE'); ?>
+                </p>
+                <hr>
+            </div>
+        </div>
+    </div>
+
     <!-- ====================================================================
          SECTION 1 — EVENT STATISTICS
     ===================================================================== -->
