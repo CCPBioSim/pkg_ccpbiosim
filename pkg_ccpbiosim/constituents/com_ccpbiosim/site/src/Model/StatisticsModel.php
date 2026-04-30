@@ -10,8 +10,8 @@ namespace Ccpbiosim\Component\Ccpbiosim\Site\Model;
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\Http\HttpFactory;
 use Joomla\CMS\MVC\Model\BaseDatabaseModel;
-use Joomla\Http\Http;
 
 /**
  * Statistics Model
@@ -122,7 +122,7 @@ class StatisticsModel extends BaseDatabaseModel
             }
         }
 
-        $http     = new Http();
+        $http     = HttpFactory::getHttp();
         $response = $http->get(self::ASSETS_JSON_URL, [], 10);
 
         if ($response->code !== 200) {
@@ -212,7 +212,7 @@ class StatisticsModel extends BaseDatabaseModel
             'Accept'     => 'application/vnd.github.v3+json',
         ];
 
-        $http     = new Http();
+        $http     = HttpFactory::getHttp();
         $apiUrl   = self::GITHUB_API_BASE . $repoSlug;
         $response = $http->get($apiUrl, $headers, 10);
 
@@ -250,3 +250,4 @@ class StatisticsModel extends BaseDatabaseModel
         return $metrics;
     }
 }
+?>
