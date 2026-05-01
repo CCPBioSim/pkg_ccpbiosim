@@ -212,6 +212,12 @@ class StatisticsModel extends BaseDatabaseModel
             'Accept'     => 'application/vnd.github.v3+json',
         ];
 
+        // Add Authorization header if a PAT has been set in the menu item params
+        $token = $this->getGithubToken();
+        if ($token !== '') {
+            $headers['Authorization'] = 'Bearer ' . $token;
+        }
+
         $http     = HttpFactory::getHttp();
         $apiUrl   = self::GITHUB_API_BASE . $repoSlug;
         $response = $http->get($apiUrl, $headers, 10);
@@ -249,5 +255,27 @@ class StatisticsModel extends BaseDatabaseModel
 
         return $metrics;
     }
+
+    /**
+     * Returns the GitHub Personal Access Token from the active menu item params,
+     * or an empty string if none has been set.
+     *
+     * The token is stored in the menu item's params field (set via default.xml)
+     * so it never appears in source code or the repository.
+     *
+     * @return string
+     */
+    private function getGithubToken(): string
+    {
+        $app  = Factory::getApplication();
+        $menu = $app->getMenu()->getActive();
+
+        if (!$menu) {
+            return '';
+        }
+
+        $token = trim((string) $menu->getParams()->get('github_token', ''));
+
+        return $token;
+    }
 }
-?>
