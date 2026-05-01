@@ -6,6 +6,7 @@ The package contains the following extensions:
 
 * com_ccpbiosim - the core joomla component
 * mod_ccpbiosim_activities - the community activities summary module for the website front page
+* mod_events - module to show next upcoming events on front page
 * mod_ccpbiosim_hero - the hero module for the front page
 * mod_ccpbiosim_mailinglist - the mailing list feature for the website front page
 * mod_ccpbiosim_youtube - show recent additions to youtube channel on front page.
