@@ -12,8 +12,8 @@ defined('_JEXEC') or die;
         <div class="card h-100 bg-light-alt border-0">
           <div class="card-body d-flex flex-column align-items-center text-center">
             <div class="mb-3">
-              <span class="d-inline-flex align-items-center justify-content-center rounded p-2 bg-primary bg-opacity-10">
-                <i class="fa-solid fa-code fa-xl text-primary"></i>
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;flex-shrink:0;border-radius:12px;background-color:rgba(13,110,253,0.12);">
+                <i class="fa-solid fa-code fa-xl text-primary" style="font-size:1.5rem;line-height:1;"></i>
               </span>
             </div>
             <h5 class="card-title"><?php echo $params->get('actvties-ttleblock1', 'Software Development'); ?></h5>
@@ -33,8 +33,8 @@ defined('_JEXEC') or die;
         <div class="card h-100 bg-light-alt border-0">
           <div class="card-body d-flex flex-column align-items-center text-center">
             <div class="mb-3">
-              <span class="d-inline-flex align-items-center justify-content-center rounded p-2 bg-success bg-opacity-10">
-                <i class="fa-solid fa-graduation-cap fa-xl text-success"></i>
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;flex-shrink:0;border-radius:12px;background-color:rgba(25,135,84,0.12);">
+                <i class="fa-solid fa-graduation-cap fa-xl text-success" style="font-size:1.5rem;line-height:1;"></i>
               </span>
             </div>
             <h5 class="card-title"><?php echo $params->get('actvties-ttleblock2', 'Training & Skills'); ?></h5>
@@ -54,8 +54,8 @@ defined('_JEXEC') or die;
         <div class="card h-100 bg-light-alt border-0">
           <div class="card-body d-flex flex-column align-items-center text-center">
             <div class="mb-3">
-              <span class="d-inline-flex align-items-center justify-content-center rounded p-2 bg-purple bg-opacity-10">
-                <i class="fa-solid fa-users fa-xl" style="color: #7c3aed;"></i>
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;flex-shrink:0;border-radius:12px;background-color:rgba(124,58,237,0.12);">
+                <i class="fa-solid fa-users fa-xl" style="font-size:1.5rem;line-height:1;color:#7c3aed;"></i>
               </span>
             </div>
             <h5 class="card-title"><?php echo $params->get('actvties-ttleblock3', 'Community'); ?></h5>
@@ -75,8 +75,8 @@ defined('_JEXEC') or die;
         <div class="card h-100 bg-light-alt border-0">
           <div class="card-body d-flex flex-column align-items-center text-center">
             <div class="mb-3">
-              <span class="d-inline-flex align-items-center justify-content-center rounded p-2 bg-warning bg-opacity-10">
-                <i class="fa-solid fa-award fa-xl text-warning"></i>
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;flex-shrink:0;border-radius:12px;background-color:rgba(255,193,7,0.15);">
+                <i class="fa-solid fa-award fa-xl text-warning" style="font-size:1.5rem;line-height:1;"></i>
               </span>
             </div>
             <h5 class="card-title"><?php echo $params->get('actvties-ttleblock4', 'Best Practice'); ?></h5>
