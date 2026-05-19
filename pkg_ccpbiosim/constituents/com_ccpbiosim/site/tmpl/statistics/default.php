@@ -100,7 +100,7 @@ $this->document->addScript('https://cdn.plot.ly/plotly-2.32.0.min.js', ['version
     <h1><?php echo $this->escape($this->params->get('page_heading')); ?></h1>
 </div>
 <?php endif; ?>
-
+<p>Here we present information about our impact of various activities for the community.</p>
 <div class="ccpbiosim-statistics py-4">
 
     <!-- ====================================================================
@@ -112,7 +112,7 @@ $this->document->addScript('https://cdn.plot.ly/plotly-2.32.0.min.js', ['version
             <span class="badge bg-primary me-2">Events</span>
             All-Time Event Statistics
         </h2>
-
+        <p>These represent the all-time statistics from our conferences, workshops and webinars. Where events are truly external and only advertised by us we do not include them in our statistics, however events that we sponsor using community cash we include these since we are a partner.</p>
         <div class="row g-3 mb-4">
             <div class="col-6 col-md-3">
                 <div class="card h-100 border-0 shadow-sm text-center">
@@ -208,7 +208,7 @@ $this->document->addScript('https://cdn.plot.ly/plotly-2.32.0.min.js', ['version
             <span class="badge bg-warning text-dark me-2">Training</span>
             Actively Maintained Online Training Courses
         </h2>
-
+        <p>Here are the statistics on how many and the types of training content we currently have. We are working on bringing usage stats, so watch this space!</p>
         <div class="row g-3 mb-4">
             <div class="col-6 col-md-3">
                 <div class="card border-0 shadow-sm text-center h-100">
@@ -255,7 +255,7 @@ $this->document->addScript('https://cdn.plot.ly/plotly-2.32.0.min.js', ['version
             Actively Maintained Software Packages
             <span class="badge bg-secondary ms-2"><?php echo count($software); ?></span>
         </h2>
-
+        <p>Here are the statistics for our software repositories. We are working to bring download and install statistics here so watch this space!</p>
         <div class="row g-4">
             <?php foreach ($software as $pkg) :
                 $m        = $pkg['github_metrics'];
