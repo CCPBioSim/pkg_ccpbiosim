@@ -9,41 +9,61 @@ defined('_JEXEC') or die;
     <div class="row g-4">
       <div class="col-md-6 col-lg-3">
         <div class="card h-100 bg-light-alt border-0">
-          <div class="card-body">
+          <div class="card-body d-flex flex-column">
             <h5 class="card-title"><?php echo $params->get('actvties-ttleblock1', 'Software Development'); ?></h5>
-            <p class="card-text">
+            <p class="card-text flex-grow-1">
               <?php echo $params->get('actvties-descblock1', 'Supporting and coordinating open-source biomolecular simulation tools.'); ?>
             </p>
+            <?php if (!empty($block1Url)) : ?>
+            <div class="text-center mt-3">
+              <a href="<?php echo htmlspecialchars($block1Url); ?>" class="btn btn-primary"><?php echo $params->get('actvties-btnblock1', 'Learn More'); ?></a>
+            </div>
+            <?php endif; ?>
           </div>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="card h-100 bg-light-alt border-0">
-          <div class="card-body">
+          <div class="card-body d-flex flex-column">
             <h5 class="card-title"><?php echo $params->get('actvties-ttleblock2', 'Training & Skills'); ?></h5>
-            <p class="card-text">
+            <p class="card-text flex-grow-1">
               <?php echo $params->get('actvties-descblock2', 'Workshops, summer schools, and online training at all career stages.'); ?>
             </p>
+            <?php if (!empty($block2Url)) : ?>
+            <div class="text-center mt-3">
+              <a href="<?php echo htmlspecialchars($block2Url); ?>" class="btn btn-primary"><?php echo $params->get('actvties-btnblock2', 'Learn More'); ?></a>
+            </div>
+            <?php endif; ?>
           </div>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="card h-100 bg-light-alt border-0">
-          <div class="card-body">
+          <div class="card-body d-flex flex-column">
             <h5 class="card-title"><?php echo $params->get('actvties-ttleblock3', 'Community'); ?></h5>
-            <p class="card-text">
+            <p class="card-text flex-grow-1">
               <?php echo $params->get('actvties-descblock3', 'Connecting researchers across academia and industry.'); ?>
             </p>
+            <?php if (!empty($block3Url)) : ?>
+            <div class="text-center mt-3">
+              <a href="<?php echo htmlspecialchars($block3Url); ?>" class="btn btn-primary"><?php echo $params->get('actvties-btnblock3', 'Learn More'); ?></a>
+            </div>
+            <?php endif; ?>
           </div>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="card h-100 bg-light-alt border-0">
-          <div class="card-body">
+          <div class="card-body d-flex flex-column">
             <h5 class="card-title"><?php echo $params->get('actvties-ttleblock4', 'Best Practice'); ?></h5>
-            <p class="card-text">
+            <p class="card-text flex-grow-1">
               <?php echo $params->get('actvties-descblock4', 'Promoting reproducibility and methodological rigor.'); ?>
             </p>
+            <?php if (!empty($block4Url)) : ?>
+            <div class="text-center mt-3">
+              <a href="<?php echo htmlspecialchars($block4Url); ?>" class="btn btn-primary"><?php echo $params->get('actvties-btnblock4', 'Learn More'); ?></a>
+            </div>
+            <?php endif; ?>
           </div>
         </div>
       </div>
