@@ -53,8 +53,8 @@ $wa->useStyle('com_ccpbiosim.site')
         <div class="col-md-6 col-lg-4 fade-up">
           <div class="card h-100 text-center shadow-sm management-team-card-hover">
             <img src="<?php echo Uri::root() . $item->profilephoto; ?>" alt="Profile Photo"
-                 class="rounded-circle mx-auto mt-4"
-                 style="width:160px;height:160px;object-fit:cover;">
+                 class="mx-auto mt-4"
+                 style="width:160px;height:160px;object-fit:cover;border-radius:25%;">
             <div class="card-body">
               <h5 class="mb-1"><?php echo $item->title; ?> <?php echo $item->firstname; ?> <?php echo $item->surname; ?></h5>
               <p class="text-muted mb-3"><?php echo $item->role; ?></p>
