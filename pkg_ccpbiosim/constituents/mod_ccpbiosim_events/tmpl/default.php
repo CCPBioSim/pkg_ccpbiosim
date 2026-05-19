@@ -18,6 +18,8 @@ $doc->addStyleSheet(
 
 <div class="mod-ccpbiosim-events">
 
+<h3 class="text-center mb-3"><?php echo Text::_('MOD_CCPBIOSIM_EVENTS_HEADING'); ?></h3>
+
 <?php if (empty($events)) : ?>
 
     <div class="alert alert-info d-flex align-items-center gap-2" role="alert">
