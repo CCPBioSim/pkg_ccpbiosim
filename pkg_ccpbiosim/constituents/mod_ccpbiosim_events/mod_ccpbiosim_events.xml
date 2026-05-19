@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" method="upgrade">
   <name>MOD_CCPBIOSIM_EVENTS</name>
-  <version>0.9.9</version>
+  <version>1.0.0</version>
   <author>James Gebbie-Rayet</author>
   <creationDate>2026/04/27</creationDate>
   <description>MOD_CCPBIOSIM_EVENTS_DESC</description>
