@@ -50,7 +50,7 @@ $doc->addStyleSheet(
 
                 <h3 class="h6 mb-0 fw-semibold lh-sm">
                     <?php if ($hasLink) : ?>
-                        <a href="<?php echo htmlspecialchars($event->shorturl, ENT_QUOTES, 'UTF-8'); ?>"
+                        <a href="events/upcoming-events/<?php echo htmlspecialchars($event->shorturl, ENT_QUOTES, 'UTF-8'); ?>"
                            class="text-decoration-none link-dark">
                             <?php echo htmlspecialchars($event->title, ENT_QUOTES, 'UTF-8'); ?>
                         </a>
