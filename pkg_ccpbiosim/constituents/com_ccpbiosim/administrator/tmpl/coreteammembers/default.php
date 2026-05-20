@@ -83,6 +83,9 @@ if (!empty($saveOrder))
 							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_PROFILEPHOTO', 'a.profilephoto', $listDirn, $listOrder); ?>
 						</th>
 						<th class='left'>
+							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_ROLE_TITLE', 'a.roletitle', $listDirn, $listOrder); ?>
+						</th>
+						<th class='left'>
 							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_ROLE', 'a.role', $listDirn, $listOrder); ?>
 						</th>
 						<th class='left'>
@@ -95,7 +98,10 @@ if (!empty($saveOrder))
 							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_PROGRAMME', 'a.programme', $listDirn, $listOrder); ?>
 						</th>
 						<th class='left'>
-							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_SOCIAL', 'a.social', $listDirn, $listOrder); ?>
+							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_GITHUB', 'a.github', $listDirn, $listOrder); ?>
+						</th>
+						<th class='left'>
+							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_LINKEDIN', 'a.linkedin', $listDirn, $listOrder); ?>
 						</th>
 						<th class='left'>
 							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_CHAIR', 'a.chair', $listDirn, $listOrder); ?>
@@ -187,6 +193,9 @@ if (!empty($saveOrder))
 												<img src="<?php echo Uri::root() . $item->profilephoto; ?>" alt="Preview" style="max-height: 50px;" />
 							</td>
 							<td>
+								<?php echo $item->roletitle; ?>
+							</td>
+							<td>
 								<?php echo $item->role; ?>
 							</td>
 							<td>
@@ -199,7 +208,10 @@ if (!empty($saveOrder))
 								<?php echo $item->programme; ?>
 							</td>
 							<td>
-								<?php echo $item->social; ?>
+								<?php echo $item->github; ?>
+							</td>
+							<td>
+								<?php echo $item->linkedin; ?>
 							</td>
 							<td>
 								<?php echo $item->chair; ?>
