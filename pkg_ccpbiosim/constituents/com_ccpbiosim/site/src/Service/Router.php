@@ -45,11 +45,19 @@ class Router extends RouterView
 	 */
 	private $categoryCache = [];
 
+	/**
+	 * The database driver
+	 *
+	 * @var    DatabaseInterface
+	 */
+	private $db;
+
 	public function __construct(SiteApplication $app, AbstractMenu $menu, CategoryFactoryInterface $categoryFactory, DatabaseInterface $db)
 	{
 		$params = ComponentHelper::getParams('com_ccpbiosim');
 		$this->noIDs = (bool) $params->get('sef_ids');
 		$this->categoryFactory = $categoryFactory;
+		$this->db = $db;
 		
 		# Register views
 		$coreteammembers = new RouterViewConfiguration('coreteammembers');
@@ -260,7 +268,24 @@ class Router extends RouterView
 	*/
 	public function getEventSegment($id, $query)
 	{
-		return array((int) $id => $id);
+		// Strip any trailing :slug that Joomla may have appended
+		$id = (int) $id;
+
+		$db    = $this->db;
+		$query = $db->getQuery(true)
+			->select($db->quoteName('shorturl'))
+			->from($db->quoteName('#__ccpbiosim_events'))
+			->where($db->quoteName('id') . ' = ' . $id);
+		$db->setQuery($query);
+		$shorturl = $db->loadResult();
+
+		if ($shorturl)
+		{
+			return array($id => $shorturl);
+		}
+
+		// Fallback to numeric id if no shorturl is set
+		return array($id => $id);
 	}
 
 	/**
@@ -286,7 +311,22 @@ class Router extends RouterView
 	*/
 	public function getEventId($segment, $query)
 	{
-		return (int) $segment;
+		// If the segment is purely numeric it's already an id (legacy/fallback URLs)
+		if (is_numeric($segment))
+		{
+			return (int) $segment;
+		}
+
+		// Look up the id by shorturl
+		$db    = $this->db;
+		$dbQuery = $db->getQuery(true)
+			->select($db->quoteName('id'))
+			->from($db->quoteName('#__ccpbiosim_events'))
+			->where($db->quoteName('shorturl') . ' = ' . $db->quote($segment));
+		$db->setQuery($dbQuery);
+		$id = $db->loadResult();
+
+		return $id ? (int) $id : false;
 	}
 
 	/**

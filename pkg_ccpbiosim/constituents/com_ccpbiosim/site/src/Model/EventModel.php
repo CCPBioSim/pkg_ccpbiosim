@@ -57,6 +57,19 @@ class EventModel extends ItemModel
 			Factory::getApplication()->setUserState('com_ccpbiosim.edit.event.id', $id);
 		}
 
+		// If $id is a non-numeric slug (shorturl), resolve it to a numeric id
+		if (!empty($id) && !is_numeric($id))
+		{
+			$db    = $this->getDbo();
+			$query = $db->getQuery(true)
+				->select($db->quoteName('id'))
+				->from($db->quoteName('#__ccpbiosim_events'))
+				->where($db->quoteName('shorturl') . ' = ' . $db->quote($id));
+			$db->setQuery($query);
+			$resolvedId = $db->loadResult();
+			$id = $resolvedId ? (int) $resolvedId : $id;
+		}
+
 		$this->setState('event.id', $id);
 
 		// Load the parameters.
