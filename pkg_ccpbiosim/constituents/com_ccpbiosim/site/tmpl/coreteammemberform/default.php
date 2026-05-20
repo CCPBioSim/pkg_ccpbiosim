@@ -65,13 +65,17 @@ $canEdit = CcpbiosimHelper::canUserEdit($this->item, $user);
 
 	<?php echo $this->form->renderField('surname'); ?>
 
+        <?php echo $this->form->renderField('roletitle'); ?>
+
 	<?php echo $this->form->renderField('role'); ?>
 
 	<?php echo $this->form->renderField('profilephoto'); ?>
 
 	<?php echo $this->form->renderField('groupwebsite'); ?>
 
-	<?php echo $this->form->renderField('social'); ?>
+	<?php echo $this->form->renderField('github'); ?>
+
+	<?php echo $this->form->renderField('linkedin'); ?>
 
 	<?php echo $this->form->renderField('chair'); ?>
 
