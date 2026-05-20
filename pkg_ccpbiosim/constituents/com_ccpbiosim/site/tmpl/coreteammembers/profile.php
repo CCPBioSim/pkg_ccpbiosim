@@ -53,12 +53,12 @@ $wa->useStyle('com_ccpbiosim.site')
         </div>
         <div class="bio-dept"><?php echo $item->insitution; ?></div>
         <h2 class="bio-name"><?php echo $item->title; ?> <?php echo $item->firstname; ?> <?php echo $item->surname; ?></h2>
-        <p class="bio-jobtitle">JobTitle</p>
+        <p class="bio-jobtitle"><?php echo $item->roletitle; ?></p>
         <div class="bio-rule"></div>
         <p class="bio-body"><?php echo $item->role; ?></p>
         <nav class="bio-links">
-          <a href="#" id="github" target="_blank" class="btn btn-secondary">GitHub</a>
-          <a href="#" id="linkedin" target="_blank" class="btn btn-info">LinkedIn</a>
+          <a href="<?php echo $item->github; ?>" id="github" target="_blank" class="btn btn-secondary">GitHub</a>
+          <a href="<?php echo $item->linkedin; ?>" id="linkedin" target="_blank" class="btn btn-info">LinkedIn</a>
         </nav>
       </div>
     </div>
