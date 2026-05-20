@@ -323,9 +323,18 @@ $uid = 'mod-ccpbiosim-yt-' . $module->id;
         player.style.display    = '';
     });
 
-    // ── Init ──────────────────────────────────────────────────────────────
-    goTo(0);
-    startAutoplay();
+    // ── Init — deferred until DOM is fully parsed ──────────────────────────
+    function init() {
+        goTo(0);
+        startAutoplay();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        // DOM already ready (script deferred or injected after parse)
+        init();
+    }
 
 }());
 </script>
