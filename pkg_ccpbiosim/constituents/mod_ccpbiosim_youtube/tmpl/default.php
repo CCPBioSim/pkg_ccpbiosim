@@ -198,23 +198,23 @@ $uid = 'mod-ccpbiosim-yt-' . $module->id;
 <script>
 (function () {
     'use strict';
- 
+
     var uid      = '<?php echo $uid; ?>';
     var carousel = document.getElementById(uid);
     if (!carousel) return;
- 
+
     var allSlides = Array.from(carousel.querySelectorAll('.youtube_mod_slide'));
     var allDots   = Array.from(document.getElementById(uid + '-dots').querySelectorAll('.youtube_mod_dot'));
     var prevBtn   = document.getElementById(uid + '-prev');
     var nextBtn   = document.getElementById(uid + '-next');
     var bar       = document.getElementById(uid + '-bar');
- 
+
     var total     = allSlides.length;
     var doAuto    = carousel.dataset.autoplay === 'true';
     var intMs     = parseInt(carousel.dataset.interval, 10) || 5000;
     var current   = 0;
     var autoTimer = null;
- 
+
     // ── Stop any playing video in a slide and restore its thumbnail ────────
     function stopVideo(slide) {
         var thumbWrap = slide.querySelector('.youtube_mod_thumb_wrap');
@@ -225,31 +225,31 @@ $uid = 'mod-ccpbiosim-yt-' . $module->id;
         player.style.display    = 'none';
         thumbWrap.style.display = '';
     }
- 
+
     // ── Go to slide ────────────────────────────────────────────────────────
     function goTo(index) {
         stopVideo(allSlides[current]);
- 
+
         allSlides[current].classList.remove('active');
         allSlides[current].setAttribute('aria-hidden', 'true');
         if (allDots[current]) {
             allDots[current].classList.remove('active');
             allDots[current].setAttribute('aria-selected', 'false');
         }
- 
+
         current = ((index % total) + total) % total;
- 
+
         allSlides[current].classList.add('active');
         allSlides[current].setAttribute('aria-hidden', 'false');
         if (allDots[current]) {
             allDots[current].classList.add('active');
             allDots[current].setAttribute('aria-selected', 'true');
         }
- 
+
         prevBtn.disabled = false;
         nextBtn.disabled = false;
     }
- 
+
     // ── Autoplay ───────────────────────────────────────────────────────────
     function startAutoplay() {
         if (!doAuto) return;
@@ -264,26 +264,26 @@ $uid = 'mod-ccpbiosim-yt-' . $module->id;
         }
         autoTimer = setInterval(function () { goTo(current + 1); startAutoplay(); }, intMs);
     }
- 
+
     function resetAutoplay() { clearInterval(autoTimer); startAutoplay(); }
- 
+
     // ── Carousel controls ──────────────────────────────────────────────────
     prevBtn && prevBtn.addEventListener('click', function () { goTo(current - 1); resetAutoplay(); });
     nextBtn && nextBtn.addEventListener('click', function () { goTo(current + 1); resetAutoplay(); });
- 
+
     allDots.forEach(function (dot) {
         dot.addEventListener('click', function () {
             goTo(parseInt(dot.dataset.index, 10));
             resetAutoplay();
         });
     });
- 
+
     // Keyboard arrow navigation
     carousel.addEventListener('keydown', function (e) {
         if (e.key === 'ArrowLeft')  { goTo(current - 1); resetAutoplay(); }
         if (e.key === 'ArrowRight') { goTo(current + 1); resetAutoplay(); }
     });
- 
+
     // Touch / swipe
     var touchStartX = 0;
     carousel.addEventListener('touchstart', function (e) {
@@ -293,13 +293,13 @@ $uid = 'mod-ccpbiosim-yt-' . $module->id;
         var dx = e.changedTouches[0].clientX - touchStartX;
         if (Math.abs(dx) > 40) { goTo(dx < 0 ? current + 1 : current - 1); resetAutoplay(); }
     }, { passive: true });
- 
+
     // Pause autoplay while hovering or focused
     carousel.addEventListener('mouseenter', function () { clearInterval(autoTimer); });
     carousel.addEventListener('mouseleave', startAutoplay);
     carousel.addEventListener('focusin',    function () { clearInterval(autoTimer); });
     carousel.addEventListener('focusout',   startAutoplay);
- 
+
     // ── In-place video player ──────────────────────────────────────────────
     // Clicking the play button hides the thumbnail and loads the iframe
     // directly inside the same card in its place. Navigating to another
@@ -308,33 +308,33 @@ $uid = 'mod-ccpbiosim-yt-' . $module->id;
     carousel.addEventListener('click', function (e) {
         var btn = e.target.closest('.youtube_mod_play_btn');
         if (!btn) return;
- 
+
         var slide     = btn.closest('.youtube_mod_slide');
         var thumbWrap = slide.querySelector('.youtube_mod_thumb_wrap');
         var player    = slide.querySelector('.youtube_mod_player');
         var iframe    = slide.querySelector('.youtube_mod_player iframe');
         if (!slide || !thumbWrap || !player || !iframe) return;
- 
+
         clearInterval(autoTimer);
- 
+
         iframe.src              = btn.dataset.embed + '?autoplay=1&rel=0';
         iframe.title            = btn.dataset.title || '';
         thumbWrap.style.display = 'none';
         player.style.display    = '';
     });
- 
+
     // ── Init — deferred until DOM is fully parsed ──────────────────────────
     function init() {
         goTo(0);
         startAutoplay();
     }
- 
+
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
         // DOM already ready (script deferred or injected after parse)
         init();
     }
- 
+
 }());
 </script>
