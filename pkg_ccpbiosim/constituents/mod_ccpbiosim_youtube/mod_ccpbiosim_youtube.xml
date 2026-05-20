@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" method="upgrade">
   <name>CCPBioSim Youtube Module</name>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <author>James Gebbie-Rayet</author>
   <creationDate>2026/04/17</creationDate>
   <description>MOD_CCPBIOSIM_YOUTUBE_DESC</description>
@@ -19,116 +19,29 @@
   <config>
     <fields name="params">
       <fieldset name="basic" label="MOD_CCPBIOSIM_YOUTUBE_FIELDSET_BASIC">
-
-        <field name="header_title"
-               type="text"
-               label="MOD_CCPBIOSIM_YOUTUBE_FIELD_HEADER_TITLE_LABEL"
-               description="MOD_CCPBIOSIM_YOUTUBE_FIELD_HEADER_TITLE_DESC"
-               default="Latest From Our Channel"
-               size="80"
-               filter="string"/>
-
-        <field name="api_key"
-               type="text"
-               label="MOD_CCPBIOSIM_YOUTUBE_FIELD_API_KEY_LABEL"
-               description="MOD_CCPBIOSIM_YOUTUBE_FIELD_API_KEY_DESC"
-               required="true"
-               size="60"
-               filter="string"/>
-
-        <field name="channel_id"
-               type="text"
-               label="MOD_CCPBIOSIM_YOUTUBE_FIELD_CHANNEL_ID_LABEL"
-               description="MOD_CCPBIOSIM_YOUTUBE_FIELD_CHANNEL_ID_DESC"
-               required="true"
-               size="40"
-               filter="string"/>
-
-        <field name="video_count"
-               type="number"
-               label="MOD_CCPBIOSIM_YOUTUBE_FIELD_VIDEO_COUNT_LABEL"
-               description="MOD_CCPBIOSIM_YOUTUBE_FIELD_VIDEO_COUNT_DESC"
-               default="6"
-               min="1"
-               max="50"
-               step="1"
-               filter="integer"/>
-
-        <field name="autoplay"
-               type="radio"
-               label="MOD_CCPBIOSIM_YOUTUBE_FIELD_AUTOPLAY_LABEL"
-               description="MOD_CCPBIOSIM_YOUTUBE_FIELD_AUTOPLAY_DESC"
-               default="0"
-               class="btn-group btn-group-yesno"
-               filter="integer">
+        <field name="header_title" type="text" label="MOD_CCPBIOSIM_YOUTUBE_FIELD_HEADER_TITLE_LABEL" description="MOD_CCPBIOSIM_YOUTUBE_FIELD_HEADER_TITLE_DESC" default="Latest From Our Channel" size="80" filter="string"/>
+        <field name="api_key" type="text" label="MOD_CCPBIOSIM_YOUTUBE_FIELD_API_KEY_LABEL" description="MOD_CCPBIOSIM_YOUTUBE_FIELD_API_KEY_DESC" required="true" size="60" filter="string"/>
+        <field name="channel_id" type="text" label="MOD_CCPBIOSIM_YOUTUBE_FIELD_CHANNEL_ID_LABEL" description="MOD_CCPBIOSIM_YOUTUBE_FIELD_CHANNEL_ID_DESC" required="true" size="40" filter="string"/>
+        <field name="video_count" type="number" label="MOD_CCPBIOSIM_YOUTUBE_FIELD_VIDEO_COUNT_LABEL" description="MOD_CCPBIOSIM_YOUTUBE_FIELD_VIDEO_COUNT_DESC" default="6" min="1" max="50" step="1" filter="integer"/>
+        <field name="autoplay" type="radio" label="MOD_CCPBIOSIM_YOUTUBE_FIELD_AUTOPLAY_LABEL" description="MOD_CCPBIOSIM_YOUTUBE_FIELD_AUTOPLAY_DESC" default="0" class="btn-group btn-group-yesno" filter="integer">
           <option value="1">JYES</option>
           <option value="0">JNO</option>
         </field>
-
-        <field name="autoplay_interval"
-               type="number"
-               label="MOD_CCPBIOSIM_YOUTUBE_FIELD_AUTOPLAY_INTERVAL_LABEL"
-               description="MOD_CCPBIOSIM_YOUTUBE_FIELD_AUTOPLAY_INTERVAL_DESC"
-               default="5000"
-               min="1000"
-               max="30000"
-               step="500"
-               filter="integer"
-               showon="autoplay:1"/>
-
-        <field name="show_title"
-               type="radio"
-               label="MOD_CCPBIOSIM_YOUTUBE_FIELD_SHOW_TITLE_LABEL"
-               description="MOD_CCPBIOSIM_YOUTUBE_FIELD_SHOW_TITLE_DESC"
-               default="1"
-               class="btn-group btn-group-yesno"
-               filter="integer">
+        <field name="autoplay_interval" type="number" label="MOD_CCPBIOSIM_YOUTUBE_FIELD_AUTOPLAY_INTERVAL_LABEL" description="MOD_CCPBIOSIM_YOUTUBE_FIELD_AUTOPLAY_INTERVAL_DESC" default="5000" min="1000" max="30000" step="500" filter="integer" showon="autoplay:1"/>
+        <field name="show_title" type="radio" label="MOD_CCPBIOSIM_YOUTUBE_FIELD_SHOW_TITLE_LABEL" description="MOD_CCPBIOSIM_YOUTUBE_FIELD_SHOW_TITLE_DESC" default="1" class="btn-group btn-group-yesno" filter="integer">
           <option value="1">JYES</option>
           <option value="0">JNO</option>
         </field>
-
-        <field name="show_description"
-               type="radio"
-               label="MOD_CCPBIOSIM_YOUTUBE_FIELD_SHOW_DESC_LABEL"
-               description="MOD_CCPBIOSIM_YOUTUBE_FIELD_SHOW_DESC_DESC"
-               default="1"
-               class="btn-group btn-group-yesno"
-               filter="integer">
+        <field name="show_description" type="radio" label="MOD_CCPBIOSIM_YOUTUBE_FIELD_SHOW_DESC_LABEL" description="MOD_CCPBIOSIM_YOUTUBE_FIELD_SHOW_DESC_DESC" default="1" class="btn-group btn-group-yesno" filter="integer">
           <option value="1">JYES</option>
           <option value="0">JNO</option>
         </field>
-
-        <field name="description_length"
-               type="number"
-               label="MOD_CCPBIOSIM_YOUTUBE_FIELD_DESC_LENGTH_LABEL"
-               description="MOD_CCPBIOSIM_YOUTUBE_FIELD_DESC_LENGTH_DESC"
-               default="120"
-               min="0"
-               max="500"
-               step="10"
-               filter="integer"
-               showon="show_description:1"/>
-
-        <field name="open_in"
-               type="list"
-               label="MOD_CCPBIOSIM_YOUTUBE_FIELD_OPEN_IN_LABEL"
-               description="MOD_CCPBIOSIM_YOUTUBE_FIELD_OPEN_IN_DESC"
-               default="_blank"
-               filter="string">
+        <field name="description_length" type="number" label="MOD_CCPBIOSIM_YOUTUBE_FIELD_DESC_LENGTH_LABEL" description="MOD_CCPBIOSIM_YOUTUBE_FIELD_DESC_LENGTH_DESC" default="120" min="0" max="500" step="10" filter="integer" showon="show_description:1"/>
+        <field name="open_in" type="list" label="MOD_CCPBIOSIM_YOUTUBE_FIELD_OPEN_IN_LABEL" description="MOD_CCPBIOSIM_YOUTUBE_FIELD_OPEN_IN_DESC" default="_blank" filter="string">
           <option value="_blank">MOD_CCPBIOSIM_YOUTUBE_FIELD_OPEN_IN_NEW_TAB</option>
           <option value="_self">MOD_CCPBIOSIM_YOUTUBE_FIELD_OPEN_IN_SAME_TAB</option>
         </field>
-
-        <field name="cache_time"
-               type="number"
-               label="MOD_CCPBIOSIM_YOUTUBE_FIELD_CACHE_TIME_LABEL"
-               description="MOD_CCPBIOSIM_YOUTUBE_FIELD_CACHE_TIME_DESC"
-               default="3600"
-               min="0"
-               max="86400"
-               step="300"
-               filter="integer"/>
-
+        <field name="cache_time" type="number" label="MOD_CCPBIOSIM_YOUTUBE_FIELD_CACHE_TIME_LABEL" description="MOD_CCPBIOSIM_YOUTUBE_FIELD_CACHE_TIME_DESC" default="3600" min="0" max="86400" step="300" filter="integer"/>
       </fieldset>
     </fields>
   </config>
