@@ -9,15 +9,39 @@ if (empty($videos)) {
     return;
 }
 
-$showTitle  = (bool) $params->get('show_title', 1);
-$showDesc   = (bool) $params->get('show_description', 1);
-$descLength = (int)  $params->get('description_length', 120);
-$openIn     = htmlspecialchars($params->get('open_in', '_blank'), ENT_QUOTES, 'UTF-8');
-$autoplay   = (bool) $params->get('autoplay', 0);
-$autoplayMs = (int)  $params->get('autoplay_interval', 5000);
+$showTitle   = (bool)   $params->get('show_title', 1);
+$showDesc    = (bool)   $params->get('show_description', 1);
+$descLength  = (int)    $params->get('description_length', 120);
+$openIn      = htmlspecialchars($params->get('open_in', '_blank'), ENT_QUOTES, 'UTF-8');
+$autoplay    = (bool)   $params->get('autoplay', 0);
+$autoplayMs  = (int)    $params->get('autoplay_interval', 5000);
+$headerTitle = htmlspecialchars(trim($params->get('header_title', 'Latest From Our Channel')), ENT_QUOTES, 'UTF-8');
+$channelId   = htmlspecialchars(trim($params->get('channel_id', '')), ENT_QUOTES, 'UTF-8');
+$channelUrl  = $channelId ? 'https://www.youtube.com/channel/' . $channelId : '';
 
 $uid = 'mod-ccpbiosim-yt-' . $module->id;
 ?>
+
+<?php if ($headerTitle) : ?>
+<div class="youtube_mod_header">
+    <?php if ($channelUrl) : ?>
+    <a class="youtube_mod_channel_link"
+       href="<?php echo $channelUrl; ?>"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="<?php echo Text::_('MOD_CCPBIOSIM_YOUTUBE_CHANNEL_LINK_ARIA'); ?>">
+        <!-- YouTube logo SVG (official brand shape) -->
+        <svg class="youtube_mod_yt_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 20" aria-hidden="true" focusable="false">
+            <path class="youtube_mod_yt_bg" d="M27.4 3.1a3.5 3.5 0 0 0-2.5-2.5C22.7 0 14 0 14 0S5.3 0 3.1.6A3.5 3.5 0 0 0 .6 3.1 36.7 36.7 0 0 0 0 10a36.7 36.7 0 0 0 .6 6.9 3.5 3.5 0 0 0 2.5 2.5C5.3 20 14 20 14 20s8.7 0 10.9-.6a3.5 3.5 0 0 0 2.5-2.5A36.7 36.7 0 0 0 28 10a36.7 36.7 0 0 0-.6-6.9z"/>
+            <path class="youtube_mod_yt_arrow" d="M11.2 14.3 18.5 10l-7.3-4.3v8.6z"/>
+        </svg>
+        <span><?php echo $headerTitle; ?></span>
+    </a>
+    <?php else : ?>
+    <span class="youtube_mod_header_text"><?php echo $headerTitle; ?></span>
+    <?php endif; ?>
+</div>
+<?php endif; ?>
 
 <div id="<?php echo $uid; ?>"
      class="youtube_mod"
