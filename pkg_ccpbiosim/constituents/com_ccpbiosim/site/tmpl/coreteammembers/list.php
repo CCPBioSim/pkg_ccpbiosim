@@ -73,6 +73,10 @@ $wa->useStyle('com_ccpbiosim.site')
 					</th>
 
 					<th class=''>
+						<?php echo HTMLHelper::_('grid.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_ROLE_TITLE', 'a.roletitle', $listDirn, $listOrder); ?>
+					</th>
+
+					<th class=''>
 						<?php echo HTMLHelper::_('grid.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_ROLE', 'a.role', $listDirn, $listOrder); ?>
 					</th>
 
@@ -89,7 +93,11 @@ $wa->useStyle('com_ccpbiosim.site')
 					</th>
 
 					<th class=''>
-						<?php echo HTMLHelper::_('grid.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_SOCIAL', 'a.social', $listDirn, $listOrder); ?>
+						<?php echo HTMLHelper::_('grid.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_GITHUB', 'a.github', $listDirn, $listOrder); ?>
+					</th>
+
+					<th class=''>
+						<?php echo HTMLHelper::_('grid.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_LINKEDIN', 'a.linkedin', $listDirn, $listOrder); ?>
 					</th>
 
 					<th class=''>
@@ -156,6 +164,9 @@ $wa->useStyle('com_ccpbiosim.site')
 												<img src="<?php echo Uri::root() . $item->profilephoto; ?>" alt="Preview" style="max-height: 50px;" />
 					</td>
 					<td>
+						<?php echo $item->roletitle; ?>
+					</td>
+					<td>
 						<?php echo $item->role; ?>
 					</td>
 					<td>
@@ -168,7 +179,10 @@ $wa->useStyle('com_ccpbiosim.site')
 						<?php echo $item->programme; ?>
 					</td>
 					<td>
-						<?php echo $item->social; ?>
+						<?php echo $item->github; ?>
+					</td>
+					<td>
+						<?php echo $item->linkedin; ?>
 					</td>
 					<td>
 						<?php echo $item->chair; ?>
