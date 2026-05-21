@@ -121,45 +121,6 @@ class CoreteammemberTable extends Table implements VersionableTableInterface, Ta
 			$array['title'] = '';
 		}
 
-		// Support for checkbox field: chair
-		if (!isset($array['chair']))
-		{
-			$array['chair'] = 0;
-		}
-
-		// Support for checkbox field: cosecprojectlead
-		if (!isset($array['cosecprojectlead']))
-		{
-			$array['cosecprojectlead'] = 0;
-		}
-
-		// Support for checkbox field: adminassistant
-		if (!isset($array['adminassistant']))
-		{
-			$array['adminassistant'] = 0;
-		}
-
-		// Support for multiple field: programme
-		if (isset($array['programme']))
-		{
-			if (is_array($array['programme']))
-			{
-				$array['programme'] = implode(',',$array['programme']);
-			}
-			elseif (strpos($array['programme'], ',') != false)
-			{
-				$array['programme'] = explode(',',$array['programme']);
-			}
-			elseif (strlen($array['programme']) == 0)
-			{
-				$array['programme'] = '';
-			}
-		}
-		else
-		{
-			$array['programme'] = '';
-		}
-
 		if (isset($array['params']) && is_array($array['params']))
 		{
 			$registry = new Registry;
