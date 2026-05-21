@@ -53,14 +53,9 @@ class CoreteammembersModel extends ListModel
 				'roletitle', 'a.roletitle',
 				'role', 'a.role',
 				'profilephoto', 'a.profilephoto',
-				'groupwebsite', 'a.groupwebsite',
 				'github', 'a.github',
 				'linkedin', 'a.linkedin',
-				'chair', 'a.chair',
-				'cosecprojectlead', 'a.cosecprojectlead',
-				'adminassistant', 'a.adminassistant',
-				'programme', 'a.programme',
-				'insitution', 'a.insitution',
+				'institution', 'a.institution',
 			);
 		}
 
@@ -198,20 +193,14 @@ class CoreteammembersModel extends ListModel
 	 * @return  mixed An array of data on success, false on failure.
 	 */
 	public function getItems()
-	{
+        {
 		$items = parent::getItems();
 		
 		foreach ($items as $item)
 		{
-
 				if (!empty($item->title))
 					{
 						$item->title = Text::_('COM_CCPBIOSIM_CORETEAMMEMBERS_TITLE_OPTION_' . preg_replace('/[^A-Za-z0-9\_-]/', '',strtoupper(str_replace(' ', '_',$item->title))));
-					}
-
-				if (!empty($item->programme))
-					{
-						$item->programme = Text::_('COM_CCPBIOSIM_CORETEAMMEMBERS_PROGRAMME_OPTION_' . preg_replace('/[^A-Za-z0-9\_-]/', '',strtoupper(str_replace(' ', '_',$item->programme))));
 					}
 		}
 

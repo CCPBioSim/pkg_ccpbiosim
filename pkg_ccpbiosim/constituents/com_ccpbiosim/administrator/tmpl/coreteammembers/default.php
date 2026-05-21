@@ -89,28 +89,14 @@ if (!empty($saveOrder))
 							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_ROLE', 'a.role', $listDirn, $listOrder); ?>
 						</th>
 						<th class='left'>
-							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_INSITUTION', 'a.insitution', $listDirn, $listOrder); ?>
+							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_INSTITUTION', 'a.institution', $listDirn, $listOrder); ?>
 						</th>
-						<th class='left'>
-							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_GROUPWEBSITE', 'a.groupwebsite', $listDirn, $listOrder); ?>
-						</th>
-						<th class='left'>
-							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_PROGRAMME', 'a.programme', $listDirn, $listOrder); ?>
-						</th>
+
 						<th class='left'>
 							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_GITHUB', 'a.github', $listDirn, $listOrder); ?>
 						</th>
 						<th class='left'>
 							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_LINKEDIN', 'a.linkedin', $listDirn, $listOrder); ?>
-						</th>
-						<th class='left'>
-							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_CHAIR', 'a.chair', $listDirn, $listOrder); ?>
-						</th>
-						<th class='left'>
-							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_COSECPROJECTLEAD', 'a.cosecprojectlead', $listDirn, $listOrder); ?>
-						</th>
-						<th class='left'>
-							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_CORETEAMMEMBERS_ADMINASSISTANT', 'a.adminassistant', $listDirn, $listOrder); ?>
 						</th>
 						
 					<th scope="col" class="w-3 d-none d-lg-table-cell" >
@@ -199,28 +185,13 @@ if (!empty($saveOrder))
 								<?php echo $item->role; ?>
 							</td>
 							<td>
-								<?php echo $item->insitution; ?>
-							</td>
-							<td>
-								<?php echo $item->groupwebsite; ?>
-							</td>
-							<td>
-								<?php echo $item->programme; ?>
+								<?php echo $item->institution; ?>
 							</td>
 							<td>
 								<?php echo $item->github; ?>
 							</td>
 							<td>
 								<?php echo $item->linkedin; ?>
-							</td>
-							<td>
-								<?php echo $item->chair; ?>
-							</td>
-							<td>
-								<?php echo $item->cosecprojectlead; ?>
-							</td>
-							<td>
-								<?php echo $item->adminassistant; ?>
 							</td>
 							
 							<td class="d-none d-lg-table-cell">

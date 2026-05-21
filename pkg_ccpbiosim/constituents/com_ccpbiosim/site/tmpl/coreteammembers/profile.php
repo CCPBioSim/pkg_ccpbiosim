@@ -51,14 +51,19 @@ $wa->useStyle('com_ccpbiosim.site')
         <div class="staff-bio-avatar mb-3">
           <img src="<?php echo Uri::root() . $item->profilephoto; ?>" alt="<?php echo $item->title; ?> <?php echo $item->firstname; ?> <?php echo $item->surname; ?>">
         </div>
-        <div class="bio-dept"><?php echo $item->insitution; ?></div>
+        <div class="bio-dept"><?php echo $item->institution; ?></div>
         <h2 class="bio-name"><?php echo $item->title; ?> <?php echo $item->firstname; ?> <?php echo $item->surname; ?></h2>
         <p class="bio-jobtitle"><?php echo $item->roletitle; ?></p>
         <div class="bio-rule"></div>
         <p class="bio-body"><?php echo $item->role; ?></p>
         <nav class="bio-links">
-          <a href="<?php echo $item->github; ?>" id="github" target="_blank" class="btn btn-secondary">GitHub</a>
-          <a href="<?php echo $item->linkedin; ?>" id="linkedin" target="_blank" class="btn btn-info">LinkedIn</a>
+          <?php if (!empty($item->github)): ?>
+            <a href="<?php echo $item->github; ?>" id="github" target="_blank" class="btn btn-secondary">GitHub</a>
+          <?php endif; ?>
+
+          <?php if (!empty($item->linkedin)): ?>
+            <a href="<?php echo $item->linkedin; ?>" id="linkedin" target="_blank" class="btn btn-info">LinkedIn</a>
+          <?php endif; ?>
         </nav>
       </div>
     </div>

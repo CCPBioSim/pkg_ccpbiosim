@@ -168,14 +168,9 @@ class HtmlView extends BaseHtmlView
 			'a.`roletitle`' => Text::_('COM_CCPBIOSIM_CORETEAMMEMBERS_ROLE_TITLE'),
 			'a.`role`' => Text::_('COM_CCPBIOSIM_CORETEAMMEMBERS_ROLE'),
 			'a.`profilephoto`' => Text::_('COM_CCPBIOSIM_CORETEAMMEMBERS_PROFILEPHOTO'),
-			'a.`groupwebsite`' => Text::_('COM_CCPBIOSIM_CORETEAMMEMBERS_GROUPWEBSITE'),
 			'a.`github`' => Text::_('COM_CCPBIOSIM_CORETEAMMEMBERS_GITHUB'),
 			'a.`linkedin`' => Text::_('COM_CCPBIOSIM_CORETEAMMEMBERS_LINKEDIN'),
-			'a.`chair`' => Text::_('COM_CCPBIOSIM_CORETEAMMEMBERS_CHAIR'),
-			'a.`cosecprojectlead`' => Text::_('COM_CCPBIOSIM_CORETEAMMEMBERS_COSECPROJECTLEAD'),
-			'a.`adminassistant`' => Text::_('COM_CCPBIOSIM_CORETEAMMEMBERS_ADMINASSISTANT'),
-			'a.`programme`' => Text::_('COM_CCPBIOSIM_CORETEAMMEMBERS_PROGRAMME'),
-			'a.`insitution`' => Text::_('COM_CCPBIOSIM_CORETEAMMEMBERS_INSITUTION'),
+			'a.`institution`' => Text::_('COM_CCPBIOSIM_CORETEAMMEMBERS_INSTITUTION'),
 		);
 	}
 

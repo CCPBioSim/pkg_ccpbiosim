@@ -129,20 +129,6 @@ class CoreteammemberModel extends AdminModel
 			$data->title = $array;
 			}
 
-			// Support for multiple or not foreign key field: programme
-			$array = array();
-
-			foreach ((array) $data->programme as $value)
-			{
-				if (!is_array($value))
-				{
-					$array[] = $value;
-				}
-			}
-			if(!empty($array)){
-
-			$data->programme = $array;
-			}
 		}
 
 		return $data;
