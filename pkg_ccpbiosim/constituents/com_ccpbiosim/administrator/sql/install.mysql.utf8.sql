@@ -13,14 +13,9 @@ CREATE TABLE IF NOT EXISTS `#__ccpbiosim_core_team` (
 `roletitle` TEXT NOT NULL ,
 `role` TEXT NOT NULL ,
 `profilephoto` TEXT NULL ,
-`groupwebsite` VARCHAR(255)  NULL  DEFAULT "",
 `github` VARCHAR(255)  NULL  DEFAULT "",
 `linkedin` VARCHAR(255)  NULL  DEFAULT "",
-`chair` VARCHAR(255)  NULL  DEFAULT "",
-`cosecprojectlead` VARCHAR(255)  NULL  DEFAULT "",
-`adminassistant` VARCHAR(255)  NULL  DEFAULT "",
-`programme` VARCHAR(255)  NULL  DEFAULT "",
-`insitution` VARCHAR(255)  NULL  DEFAULT "",
+`institution` VARCHAR(255)  NULL  DEFAULT "",
 PRIMARY KEY (`id`)
 ,KEY `idx_state` (`state`)
 ,KEY `idx_checked_out` (`checked_out`)
