@@ -51,7 +51,7 @@ $wa->useStyle('com_ccpbiosim.site')
         <div class="staff-bio-avatar mb-3">
           <img src="<?php echo Uri::root() . $item->profilephoto; ?>" alt="<?php echo $item->title; ?> <?php echo $item->firstname; ?> <?php echo $item->surname; ?>">
         </div>
-        <div class="bio-dept"><?php echo $item->insitution; ?></div>
+        <div class="bio-dept"><?php echo $item->institution; ?></div>
         <h2 class="bio-name"><?php echo $item->title; ?> <?php echo $item->firstname; ?> <?php echo $item->surname; ?></h2>
         <p class="bio-jobtitle"><?php echo $item->roletitle; ?></p>
         <div class="bio-rule"></div>
