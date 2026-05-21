@@ -55,7 +55,7 @@ $wa->useStyle('com_ccpbiosim.site')
           </div>
           <div class="core-team-content">
             <div class="core-team-name"><?php echo $item->title; ?> <?php echo $item->firstname; ?> <?php echo $item->surname; ?></div>
-            <div class="core-team-institution"><?php echo $item->insitution; ?></div>
+            <div class="core-team-institution"><?php echo $item->institution; ?></div>
             <p class="core-team-bio"><?php echo $item->role; ?></p>
           </div>
         </div>
