@@ -47,12 +47,14 @@ class ManagementteamsModel extends ListModel
 				'role', 'a.role',
 				'profilephoto', 'a.profilephoto',
 				'groupwebsite', 'a.groupwebsite',
-				'social', 'a.social',
+				'email', 'a.email',
+				'twitter', 'a.twitter',
+				'linkedin', 'a.linkedin',
 				'chair', 'a.chair',
+				'secretary', 'a.secretary',
 				'cosecprojectlead', 'a.cosecprojectlead',
 				'adminassistant', 'a.adminassistant',
-				'insitution', 'a.insitution',
-				'secretary', 'a.secretary',
+				'institution', 'a.institution',
 			);
 		}
 

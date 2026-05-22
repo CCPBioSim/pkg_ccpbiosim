@@ -58,7 +58,7 @@ $wa->useStyle('com_ccpbiosim.site')
             <div class="card-body">
               <h5 class="mb-1"><?php echo $item->title; ?> <?php echo $item->firstname; ?> <?php echo $item->surname; ?></h5>
               <p class="text-muted mb-3"><?php echo $item->role; ?></p>
-              <p><?php echo $item->insitution; ?></p>
+              <p><?php echo $item->institution; ?></p>
               <div class="management-team-social mt-3">
                 <a href="#"><i class="bi bi-linkedin"></i></a>
                 <a href="#"><i class="bi bi-envelope"></i></a>

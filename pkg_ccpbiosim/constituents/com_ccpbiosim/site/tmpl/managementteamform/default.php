@@ -71,17 +71,21 @@ $canEdit = CcpbiosimHelper::canUserEdit($this->item, $user);
 
 	<?php echo $this->form->renderField('groupwebsite'); ?>
 
-	<?php echo $this->form->renderField('social'); ?>
+	<?php echo $this->form->renderField('email'); ?>
+	
+	<?php echo $this->form->renderField('twitter'); ?>
+	
+	<?php echo $this->form->renderField('linkedin'); ?>
 
 	<?php echo $this->form->renderField('chair'); ?>
+	
+	<?php echo $this->form->renderField('secretary'); ?>
 
 	<?php echo $this->form->renderField('cosecprojectlead'); ?>
 
 	<?php echo $this->form->renderField('adminassistant'); ?>
 
-	<?php echo $this->form->renderField('insitution'); ?>
-
-	<?php echo $this->form->renderField('secretary'); ?>
+	<?php echo $this->form->renderField('institution'); ?>
 
 	<?php echo HTMLHelper::_('uitab.endTab'); ?>
 			<div class="control-group">

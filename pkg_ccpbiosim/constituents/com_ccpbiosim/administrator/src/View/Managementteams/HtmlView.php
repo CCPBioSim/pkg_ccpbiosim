@@ -168,12 +168,14 @@ class HtmlView extends BaseHtmlView
 			'a.`role`' => Text::_('COM_CCPBIOSIM_MANAGEMENTTEAMS_ROLE'),
 			'a.`profilephoto`' => Text::_('COM_CCPBIOSIM_MANAGEMENTTEAMS_PROFILEPHOTO'),
 			'a.`groupwebsite`' => Text::_('COM_CCPBIOSIM_MANAGEMENTTEAMS_GROUPWEBSITE'),
-			'a.`social`' => Text::_('COM_CCPBIOSIM_MANAGEMENTTEAMS_SOCIAL'),
+			'a.`email`' => Text::_('COM_CCPBIOSIM_MANAGEMENTTEAMS_EMAIL'),
+			'a.`twitter`' => Text::_('COM_CCPBIOSIM_MANAGEMENTTEAMS_TWITTER'),
+			'a.`linkedin`' => Text::_('COM_CCPBIOSIM_MANAGEMENTTEAMS_LNIKEDIN'),
 			'a.`chair`' => Text::_('COM_CCPBIOSIM_MANAGEMENTTEAMS_CHAIR'),
+		        'a.`secretary`' => Text::_('COM_CCPBIOSIM_MANAGEMENTTEAMS_SECRETARY'),
 			'a.`cosecprojectlead`' => Text::_('COM_CCPBIOSIM_MANAGEMENTTEAMS_COSECPROJECTLEAD'),
 			'a.`adminassistant`' => Text::_('COM_CCPBIOSIM_MANAGEMENTTEAMS_ADMINASSISTANT'),
-			'a.`insitution`' => Text::_('COM_CCPBIOSIM_MANAGEMENTTEAMS_INSITUTION'),
-			'a.`secretary`' => Text::_('COM_CCPBIOSIM_MANAGEMENTTEAMS_SECRETARY'),
+			'a.`institution`' => Text::_('COM_CCPBIOSIM_MANAGEMENTTEAMS_INSTITUTION'),
 		);
 	}
 

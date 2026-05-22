@@ -86,25 +86,31 @@ if (!empty($saveOrder))
 							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_ROLE', 'a.role', $listDirn, $listOrder); ?>
 						</th>
 						<th class='left'>
-							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_INSITUTION', 'a.insitution', $listDirn, $listOrder); ?>
+							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_INSTITUTION', 'a.institution', $listDirn, $listOrder); ?>
 						</th>
 						<th class='left'>
 							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_GROUPWEBSITE', 'a.groupwebsite', $listDirn, $listOrder); ?>
 						</th>
 						<th class='left'>
-							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_SOCIAL', 'a.social', $listDirn, $listOrder); ?>
+							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_EMAIL', 'a.email', $listDirn, $listOrder); ?>
+						</th>
+						<th class='left'>
+							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_TWITTER', 'a.twitter', $listDirn, $listOrder); ?>
+						</th>
+						<th class='left'>
+							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_LINKEDIN', 'a.linkedin', $listDirn, $listOrder); ?>
 						</th>
 						<th class='left'>
 							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_CHAIR', 'a.chair', $listDirn, $listOrder); ?>
+						</th>
+						<th class='left'>
+							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_SECRETARY', 'a.secretary', $listDirn, $listOrder); ?>
 						</th>
 						<th class='left'>
 							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_COSECPROJECTLEAD', 'a.cosecprojectlead', $listDirn, $listOrder); ?>
 						</th>
 						<th class='left'>
 							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_ADMINASSISTANT', 'a.adminassistant', $listDirn, $listOrder); ?>
-						</th>
-						<th class='left'>
-							<?php echo HTMLHelper::_('searchtools.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_SECRETARY', 'a.secretary', $listDirn, $listOrder); ?>
 						</th>
 						
 					<th scope="col" class="w-3 d-none d-lg-table-cell" >
@@ -190,25 +196,31 @@ if (!empty($saveOrder))
 								<?php echo $item->role; ?>
 							</td>
 							<td>
-								<?php echo $item->insitution; ?>
+								<?php echo $item->institution; ?>
 							</td>
 							<td>
 								<?php echo $item->groupwebsite; ?>
 							</td>
 							<td>
-								<?php echo $item->social; ?>
+								<?php echo $item->email; ?>
+							</td>
+							<td>
+								<?php echo $item->twitter; ?>
+							</td>
+							<td>
+								<?php echo $item->linkedin; ?>
 							</td>
 							<td>
 								<?php echo $item->chair; ?>
+							</td>
+							<td>
+								<?php echo $item->secretary; ?>
 							</td>
 							<td>
 								<?php echo $item->cosecprojectlead; ?>
 							</td>
 							<td>
 								<?php echo $item->adminassistant; ?>
-							</td>
-							<td>
-								<?php echo $item->secretary; ?>
 							</td>
 							
 							<td class="d-none d-lg-table-cell">

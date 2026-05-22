@@ -77,7 +77,7 @@ $wa->useStyle('com_ccpbiosim.site')
 					</th>
 
 					<th class=''>
-						<?php echo HTMLHelper::_('grid.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_INSITUTION', 'a.insitution', $listDirn, $listOrder); ?>
+						<?php echo HTMLHelper::_('grid.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_INSTITUTION', 'a.institution', $listDirn, $listOrder); ?>
 					</th>
 
 					<th class=''>
@@ -85,7 +85,15 @@ $wa->useStyle('com_ccpbiosim.site')
 					</th>
 
 					<th class=''>
-						<?php echo HTMLHelper::_('grid.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_SOCIAL', 'a.social', $listDirn, $listOrder); ?>
+						<?php echo HTMLHelper::_('grid.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_EMAIL', 'a.email', $listDirn, $listOrder); ?>
+					</th>
+					
+					<th class=''>
+						<?php echo HTMLHelper::_('grid.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_TWITTER', 'a.twitter', $listDirn, $listOrder); ?>
+					</th>
+					
+					<th class=''>
+						<?php echo HTMLHelper::_('grid.sort',  'COM_CCPBIOSIM_MANAGEMENTTEAMS_LINKEDIN', 'a.linkedin', $listDirn, $listOrder); ?>
 					</th>
 
 					<th class=''>
@@ -159,13 +167,19 @@ $wa->useStyle('com_ccpbiosim.site')
 						<?php echo $item->role; ?>
 					</td>
 					<td>
-						<?php echo $item->insitution; ?>
+						<?php echo $item->institution; ?>
 					</td>
 					<td>
 						<?php echo $item->groupwebsite; ?>
 					</td>
 					<td>
-						<?php echo $item->social; ?>
+						<?php echo $item->email; ?>
+					</td>
+					<td>
+						<?php echo $item->twitter; ?>
+					</td>
+					<td>
+						<?php echo $item->linkedin; ?>
 					</td>
 					<td>
 						<?php echo $item->chair; ?>

@@ -58,11 +58,20 @@ $wa->useStyle('com_ccpbiosim.site')
             <div class="card-body">
               <h5 class="mb-1"><?php echo $item->title; ?> <?php echo $item->firstname; ?> <?php echo $item->surname; ?></h5>
               <p class="text-muted mb-3"><?php echo $item->role; ?></p>
-              <p><?php echo $item->insitution; ?></p>
+              <p><?php echo $item->institution; ?></p>
               <div class="management-team-social mt-3">
-                <a href="#"><i class="bi bi-linkedin"></i></a>
-                <a href="#"><i class="bi bi-envelope"></i></a>
-                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                <?php if (!empty($item->email)): ?>
+                  <a href="mailto:<?php echo $item->email; ?>" id="email"><i class="bi bi-envelope"></i></a>
+                <?php endif; ?>
+                <?php if (!empty($item->groupwebsite)): ?>
+                  <a href="<?php echo $item->groupwebsite; ?>" id="website" target="_blank"><i class="bi bi-globe"></i></a>
+                <?php endif; ?>
+                <?php if (!empty($item->twitter)): ?>
+                  <a href="<?php echo $item->twitter; ?>" id="twitter" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                <?php endif; ?>
+                <?php if (!empty($item->linkedin)): ?>
+                  <a href="<?php echo $item->linkedin; ?>" id="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+                <?php endif; ?>
               </div>
             </div>
           </div>
