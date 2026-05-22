@@ -37,12 +37,14 @@ HTMLHelper::_('bootstrap.tooltip');
 				<?php echo $this->form->renderField('role'); ?>
 				<?php echo $this->form->renderField('profilephoto'); ?>
 				<?php echo $this->form->renderField('groupwebsite'); ?>
-				<?php echo $this->form->renderField('social'); ?>
+				<?php echo $this->form->renderField('email'); ?>
+				<?php echo $this->form->renderField('twitter'); ?>
+				<?php echo $this->form->renderField('linkedin'); ?>
 				<?php echo $this->form->renderField('chair'); ?>
+				<?php echo $this->form->renderField('secretary'); ?>
 				<?php echo $this->form->renderField('cosecprojectlead'); ?>
 				<?php echo $this->form->renderField('adminassistant'); ?>
-				<?php echo $this->form->renderField('insitution'); ?>
-				<?php echo $this->form->renderField('secretary'); ?>
+				<?php echo $this->form->renderField('institution'); ?>
 				<?php if ($this->state->params->get('save_history', 1)) : ?>
 					<div class="control-group">
 						<div class="control-label"><?php echo $this->form->getLabel('version_note'); ?></div>
