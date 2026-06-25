@@ -54,11 +54,11 @@ CREATE TABLE IF NOT EXISTS `#__ccpbiosim_events` (
 `category` TEXT NOT NULL ,
 `startdatetime` DATETIME NULL  DEFAULT NULL ,
 `enddatetime` DATETIME NULL  DEFAULT NULL ,
-`eventdetails` TEXT NOT NULL ,
+`eventdetails` LONGTEXT NOT NULL ,
 `location` VARCHAR(255)  NOT NULL  DEFAULT "Manchester, UK",
 `shortdesc` VARCHAR(100)  NOT NULL ,
 `youtube` VARCHAR(255)  NULL  DEFAULT "",
-`postevent` TEXT NULL ,
+`postevent` LONGTEXT NULL ,
 `shorturl` VARCHAR(255)  NOT NULL ,
 `attendance` DOUBLE NULL ,
 PRIMARY KEY (`id`)
