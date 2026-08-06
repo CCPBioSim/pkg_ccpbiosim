@@ -55,7 +55,7 @@ foreach ($data["containers"] as $course => $coursedata) {
                       data-description="<?php echo $coursedata["longdesc"]; ?>"
                       data-category="<?php echo $category; ?>"
                       data-image="/images/logos/training/<?php echo $category; ?>.svg"
-                      data-link="https://ccpbiosim.ac.uk/notebooks/hub/spawn?profile=<?php echo $course; ?>"
+                      data-link="https://ccpbiosim.org/notebooks/hub/spawn?profile=<?php echo $course; ?>"
                       docker-pull="docker pull ghcr.io/ccpbiosim/<?php echo $course; ?>:latest"
                       docker-run="docker run -p 8888:8888 ghcr.io/ccpbiosim/<?php echo $course; ?>:latest"
                       badge-repo="https://img.shields.io/badge/github-source%20code-blue?style=for-the-badge&logo=github&link=https%3A%2F%2Fgithub.com%2Fccpbiosim%2F<?php echo $course; ?>"
