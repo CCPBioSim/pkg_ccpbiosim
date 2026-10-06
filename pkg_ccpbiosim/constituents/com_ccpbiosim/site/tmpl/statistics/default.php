@@ -13,7 +13,7 @@ use Joomla\CMS\Language\Text;
 
 $data       = $this->statisticsData;
 $events     = $data['events'];
-$containers = $data['containers'];
+$workshops   = $data['workshops'];
 $software   = $data['software'];
 
 // --------------------------------------------------------------------------
@@ -80,8 +80,8 @@ $jsPieCatClasses = json_encode($pieCatClasses);
 $jsPieAttLabels  = json_encode($pieAttLabels);
 $jsPieAttValues  = json_encode($pieAttValues);
 
-$conCatLabels = json_encode(array_keys($containers['byCategory']));
-$conCatValues = json_encode(array_values($containers['byCategory']));
+$conCatLabels = json_encode(array_keys($workshops['byCategory']));
+$conCatValues = json_encode(array_values($workshops['byCategory']));
 
 function fmt_date(?string $iso): string {
     if (!$iso) return '—';
@@ -214,13 +214,13 @@ $this->document->addScript('https://cdn.plot.ly/plotly-2.32.0.min.js', ['version
                 <div class="card border-0 shadow-sm text-center h-100">
                     <div class="card-body">
                         <div class="display-6 fw-bold text-warning">
-                            <?php echo (int) $containers['total']; ?>
+                            <?php echo (int) $workshops['total']; ?>
                         </div>
                         <div class="text-muted small mt-1">Total Courses</div>
                     </div>
                 </div>
             </div>
-            <?php foreach ($containers['byCategory'] as $catName => $catCount) : ?>
+            <?php foreach ($workshops['byCategory'] as $catName => $catCount) : ?>
             <div class="col-6 col-md-3">
                 <div class="card border-0 shadow-sm text-center h-100">
                     <div class="card-body">
