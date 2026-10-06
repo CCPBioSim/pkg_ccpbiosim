@@ -27,7 +27,7 @@ $data_sorted = array("coding" => array("catname" => "Courses for Programming"),
                      "simulation" => array("catname" => "Courses for Running Simulations"),
                      "analysis" => array("catname" => "Courses for Analysing Simulations"),
                      "advanced" => array("catname" => "Courses on Advanced Topics"));
-foreach ($data["containers"] as $course => $coursedata) {
+foreach ($data["workshops"] as $course => $coursedata) {
   $data_sorted[$coursedata["category"]]["courses"][$course] = $coursedata;
 }
 ?>
@@ -59,7 +59,7 @@ foreach ($data["containers"] as $course => $coursedata) {
                       docker-pull="docker pull ghcr.io/ccpbiosim/<?php echo $course; ?>:latest"
                       docker-run="docker run -p 8888:8888 ghcr.io/ccpbiosim/<?php echo $course; ?>:latest"
                       badge-repo="https://img.shields.io/badge/github-source%20code-blue?style=for-the-badge&logo=github&link=https%3A%2F%2Fgithub.com%2Fccpbiosim%2F<?php echo $course; ?>"
-                      badge-build="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fccpbiosim.github.io%2Fassets.json&query=%24.containers.<?php echo $course; ?>.latest&style=for-the-badge&logo=github&label=Latest%20Build"
+                      badge-build="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fccpbiosim.github.io%2Fassets.json&query=%24.workshops.<?php echo $course; ?>.latest&style=for-the-badge&logo=github&label=Latest%20Build"
                       badge-repo-link="https://github.com/CCPBioSim/<?php echo $course; ?>"
                       badge-build-link="https://github.com/CCPBioSim/<?php echo $course; ?>/pkgs/container/<?php echo $course; ?>">
                     <img src="/images/logos/training/<?php echo $category; ?>.svg" alt="<?php echo $course; ?>">
