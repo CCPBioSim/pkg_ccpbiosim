@@ -32,7 +32,7 @@ class StatisticsModel extends BaseDatabaseModel
 
         $this->_statisticsData = [
             'events'     => $this->getEventStatistics(),
-            'containers' => $this->getContainerStatistics(),
+            'workshops' => $this->getWorkshopStatistics(),
             'software'   => $this->getSoftwareStatistics(),
         ];
 
@@ -126,12 +126,12 @@ class StatisticsModel extends BaseDatabaseModel
         $response = $http->get(self::ASSETS_JSON_URL, [], 10);
 
         if ($response->code !== 200) {
-            return ['containers' => [], 'software' => []];
+            return ['workshops' => [], 'software' => []];
         }
 
         $data = json_decode($response->body, true);
         if (!is_array($data)) {
-            return ['containers' => [], 'software' => []];
+            return ['workshops' => [], 'software' => []];
         }
 
         $cacheDir = dirname($cacheFile);
@@ -143,19 +143,19 @@ class StatisticsModel extends BaseDatabaseModel
         return $data;
     }
 
-    private function getContainerStatistics(): array
+    private function getWorkshopStatistics(): array
     {
         $assets     = $this->fetchAssetsJson();
-        $containers = $assets['containers'] ?? [];
+        $workshops = $assets['workshops'] ?? [];
 
         $byCategory = [];
-        foreach ($containers as $container) {
-            $cat = $container['category'] ?? 'uncategorised';
+        foreach ($workshops as $workshop) {
+            $cat = $workshop['category'] ?? 'uncategorised';
             $byCategory[$cat] = ($byCategory[$cat] ?? 0) + 1;
         }
 
         return [
-            'total'      => count($containers),
+            'total'      => count($workshops),
             'byCategory' => $byCategory,
         ];
     }
